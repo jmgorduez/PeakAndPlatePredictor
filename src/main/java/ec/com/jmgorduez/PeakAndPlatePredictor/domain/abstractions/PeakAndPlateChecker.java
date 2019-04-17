@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 public interface PeakAndPlateChecker {
     void checkPeakAndPlate(Supplier<String> readLineSupplier,
-                      Supplier<ITransitRegulator> transitRegulatorSupplier,
+                      Supplier<ITransitRegulatoryAgency> transitRegulatorSupplier,
                       Function<String, ILicensePlateNumber> instanceLicensePlateNumber,
                       Function<String, LocalDate> instanceDate,
                       Function<String, LocalTime> instanceTime,

@@ -17,21 +17,23 @@ class LicensePlateWithLastNumberZeroOrOneTest {
 
     private LicensePlateWithLastNumberZeroOrOne licensePlateWithLastNumberZeroOrOneUnderTest;
 
+    @BeforeEach
+    void setUp(){
+        licensePlateWithLastNumberZeroOrOneUnderTest = new LicensePlateWithLastNumberZeroOrOne();
+    }
+
     @Test
     void peakAndPlateStatusAt() {
-        licensePlateWithLastNumberZeroOrOneUnderTest = PID_8585;
         assertThat(licensePlateWithLastNumberZeroOrOneUnderTest
-                .peakAndPlateStatusAt(_15_04_2019, _07_00, localDate -> true, localTime -> true))
-                .isEqualTo(CAN_BE_ON_THE_ROAD);
-        licensePlateWithLastNumberZeroOrOneUnderTest = PID_8580;
+                .peakAndPlateStatusAt(_15_04_2019, LocalTime.now(), localDate -> true, localTime -> true))
+                .isEqualTo(CAN_BE_NOT_ON_THE_ROAD);
         assertThat(licensePlateWithLastNumberZeroOrOneUnderTest
-                .peakAndPlateStatusAt(_15_04_2019, _07_00, localDate -> true, localTime -> true))
+                .peakAndPlateStatusAt(_16_04_2019, LocalTime.now(), localDate -> true, localTime -> true))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
     }
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateDate() {
-        licensePlateWithLastNumberZeroOrOneUnderTest = PID_8585;
         assertThat(licensePlateWithLastNumberZeroOrOneUnderTest
                 .peakAndPlateStatusAt(LocalDate.now(), LocalTime.now(), localDate -> false, localTime -> true))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
@@ -39,7 +41,6 @@ class LicensePlateWithLastNumberZeroOrOneTest {
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateTime() {
-        licensePlateWithLastNumberZeroOrOneUnderTest = PID_8585;
         assertThat(licensePlateWithLastNumberZeroOrOneUnderTest
                 .peakAndPlateStatusAt(LocalDate.now(), LocalTime.now(), localDate -> true, localTime -> false))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
