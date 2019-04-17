@@ -45,19 +45,19 @@ class PeakAndPlateCheckerTest {
     @Test
     void checkPeakAndPlate() {
         peakAndPlateCheckerUnderTest
-                .checkPeakAndPlate(this::readLine,
-                        this::transitRegulatoryAgency,
-                        LocalDate::parse,
-                        LocalTime::parse,
-                        this::writeOutput);
+                .checkPeakAndPlate(this::readLine, this::transitRegulatoryAgency,
+                        LocalDate::parse, LocalTime::parse, this::writeOutput);
         assertThat(outputs.isEmpty())
                 .isFalse();
         assertThat(outputs.get(ZERO))
-                .isEqualTo(PCI_8580_2019_04_15_07_00.concat(CAN_BE_NOT_ON_THE_ROAD.name()));
+                .isEqualTo(PCI_8580_2019_04_15_07_00.concat(BLANK_SPACE_STRING)
+                        .concat(CAN_BE_NOT_ON_THE_ROAD.name()));
         assertThat(outputs.get(ONE))
-                .isEqualTo(PCI_8580_2019_04_15_10_00.concat(CAN_BE_ON_THE_ROAD.name()));
+                .isEqualTo(PCI_8580_2019_04_15_10_00.concat(BLANK_SPACE_STRING)
+                        .concat(CAN_BE_ON_THE_ROAD.name()));
         assertThat(outputs.get(TWO))
-                .isEqualTo(PCI_8581_2019_04_16_07_00.concat(CAN_BE_NOT_ON_THE_ROAD.name()));
+                .isEqualTo(PCI_8581_2019_04_16_07_00.concat(BLANK_SPACE_STRING)
+                        .concat(CAN_BE_ON_THE_ROAD.name()));
     }
 
     String readLine() {
@@ -79,6 +79,6 @@ class PeakAndPlateCheckerTest {
     }
 
     void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatusOutput) {
-        outputs.add(input.concat(peakAndPlateStatusOutput.name()));
+        outputs.add(input.concat(BLANK_SPACE_STRING).concat(peakAndPlateStatusOutput.name()));
     }
 }

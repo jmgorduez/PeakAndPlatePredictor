@@ -11,8 +11,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface IPeakAndPlateChecker {
-     void checkPeakAndPlate(Supplier<String> readLineSupplier,
-                      Supplier<ITransitRegulatoryAgency> transitRegulatorSupplier,
+     void checkPeakAndPlate(Supplier<String> readLine,
+                      Supplier<ITransitRegulatoryAgency> transitRegulatoryAgency,
                       Function<String, LocalDate> instanceDate,
                       Function<String, LocalTime> instanceTime,
                       BiConsumer<String, PeakAndPlateStatus> writeOutputConsumer);
