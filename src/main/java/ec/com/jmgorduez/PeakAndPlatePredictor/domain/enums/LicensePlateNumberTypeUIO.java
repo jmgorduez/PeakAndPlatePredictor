@@ -19,12 +19,12 @@ public enum LicensePlateNumberTypeUIO {
     LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS(FRIDAY, EIGHT, NINE);
 
     private final DayOfWeek dayOfWeekCanBeNotOnRoad;
-    private final List<Integer> lastNumbersCanBeNotOnRoad;
+    private final List<Integer> lastNumbers;
 
-    LicensePlateNumberTypeUIO(DayOfWeek dayOfWeekCanBeNotOnRoad, Integer... lastNumbersCanBeNotOnRoad) {
+    LicensePlateNumberTypeUIO(DayOfWeek dayOfWeekCanBeNotOnRoad, Integer... lastNumbers) {
         this.dayOfWeekCanBeNotOnRoad = dayOfWeekCanBeNotOnRoad;
-        this.lastNumbersCanBeNotOnRoad
-                = Arrays.stream(lastNumbersCanBeNotOnRoad).collect(Collectors.toList());
+        this.lastNumbers
+                = Arrays.stream(lastNumbers).collect(Collectors.toList());
     }
 
     public boolean canBeOnRoadAt(DayOfWeek dayOfWeek) {
@@ -43,6 +43,6 @@ public enum LicensePlateNumberTypeUIO {
 
     private static Predicate<LicensePlateNumberTypeUIO> itRepresentsThisLastNumber(Integer lastNumberCanBeNotOnRoad) {
         return licensePlateNumberTypeUIO ->
-                licensePlateNumberTypeUIO.lastNumbersCanBeNotOnRoad.contains(lastNumberCanBeNotOnRoad);
+                licensePlateNumberTypeUIO.lastNumbers.contains(lastNumberCanBeNotOnRoad);
     }
 }
