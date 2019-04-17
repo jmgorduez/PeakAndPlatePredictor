@@ -10,8 +10,29 @@ import java.util.function.Function;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
+import static java.time.DayOfWeek.*;
 
-public class LicensePlateWithLastNumberZeroOrOne implements ILicensePlateNumber {
+public class LicensePlateNumberUIO implements ILicensePlateNumber {
+
+    public enum LicensePlateNumberClassifier{
+        LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS(MONDAY),
+        LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_TUESDAY(TUESDAY),
+        LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_WEDNESDAY(WEDNESDAY),
+        LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_THURSDAY(THURSDAY),
+        LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAY(FRIDAY);
+
+        private final DayOfWeek dayOfWeekCanBeNotOnRoad;
+
+        LicensePlateNumberClassifier(DayOfWeek dayOfWeekCanBeNotOnRoad){
+            this.dayOfWeekCanBeNotOnRoad = dayOfWeekCanBeNotOnRoad;
+        }
+    }
+
+    private final LicensePlateNumberClassifier licensePlateNumberClassifier;
+
+    public LicensePlateNumberUIO(LicensePlateNumberClassifier licensePlateNumberClassifier) {
+        this.licensePlateNumberClassifier = licensePlateNumberClassifier;
+    }
 
     @Override
     public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date,
@@ -28,7 +49,7 @@ public class LicensePlateWithLastNumberZeroOrOne implements ILicensePlateNumber 
     }
 
     private boolean isMonday(LocalDate date) {
-        return date.getDayOfWeek().equals(DayOfWeek.MONDAY);
+        return date.getDayOfWeek().equals(MONDAY);
     }
 
     private boolean isNotAPeakAndPlateDate(LocalDate date, Function<LocalDate, Boolean> isAPeakAndPlateDate) {

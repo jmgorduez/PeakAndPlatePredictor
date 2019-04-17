@@ -1,7 +1,5 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateWithLastNumberZeroOrOne;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
