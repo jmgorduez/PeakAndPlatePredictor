@@ -15,13 +15,9 @@ class LicensePlateNumberUIOTest {
 
     private LicensePlateNumberUIO licensePlateNumberUIOUnderTest;
 
-    @BeforeEach
-    void setUp(){
-        licensePlateNumberUIOUnderTest = new LicensePlateNumberUIO(null);
-    }
-
     @Test
-    void peakAndPlateStatusAt() {
+    void peakAndPlateStatusOnMondays() {
+        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MODAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_15_04_2019, LocalTime.now(), localDate -> true, localTime -> true))
                 .isEqualTo(CAN_BE_NOT_ON_THE_ROAD);
@@ -32,6 +28,7 @@ class LicensePlateNumberUIOTest {
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateDate() {
+        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MODAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(LocalDate.now(), LocalTime.now(), localDate -> false, localTime -> true))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
@@ -39,6 +36,7 @@ class LicensePlateNumberUIOTest {
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateTime() {
+        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MODAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(LocalDate.now(), LocalTime.now(), localDate -> true, localTime -> false))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);

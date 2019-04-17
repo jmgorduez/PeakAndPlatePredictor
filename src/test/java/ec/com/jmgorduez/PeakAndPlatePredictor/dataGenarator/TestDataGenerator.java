@@ -1,9 +1,17 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO.LicensePlateNumberClassifier.LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS;
+
 public class TestDataGenerator {
+
+    public static final LicensePlateNumberUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MODAYS
+            = new LicensePlateNumberUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS);
+
     public static final LocalDate _15_04_2019 = LocalDate.parse("2019-04-15");
     public static final LocalDate _16_04_2019 = LocalDate.parse("2019-04-16");
 
