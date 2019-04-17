@@ -10,6 +10,6 @@ import java.util.function.Function;
 
 public interface ILicensePlateNumber {
     PeakAndPlateStatus peakAndPlateStatusAt(LocalTime time,
-                                            Function<DayOfWeek, Boolean> isAPeakAndPlateDayOfWeek,
+                                            Function<LocalDate, Boolean> isAPeakAndPlateDay,
                                             Function<LocalTime, Boolean> isAPeakAndPlateTime);
 }
