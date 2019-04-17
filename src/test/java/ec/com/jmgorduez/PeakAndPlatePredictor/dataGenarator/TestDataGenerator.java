@@ -5,15 +5,21 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.*;
 
 public class TestDataGenerator {
 
-    public static final LicensePlateNumberUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MODAYS
+    public static final LicensePlateNumberUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS
             = new LicensePlateNumberUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS);
+    public static final LicensePlateNumberUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS
+            = new LicensePlateNumberUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS);
     public static final LicensePlateNumberUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS
             = new LicensePlateNumberUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS);
+
+    public static final String PCI_8580 = "PCI8580";
+    public static final String PCI_8581 = "PCI8581";
+    public static final String PCI_8584 = "PCI8584";
+    public static final String PCI_8585 = "PCI8585";
 
     public static final LocalDate _15_04_2019 = LocalDate.parse("2019-04-15");
     public static final LocalDate _16_04_2019 = LocalDate.parse("2019-04-16");

@@ -41,5 +41,13 @@ class TransitRegulatoryAgencyUIOTest {
 
     @Test
     void instanceLicensePlateNumber() {
+        assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8580))
+                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
+        assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8581))
+                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
+        assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8584))
+                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
+        assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8585))
+                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
     }
 }
