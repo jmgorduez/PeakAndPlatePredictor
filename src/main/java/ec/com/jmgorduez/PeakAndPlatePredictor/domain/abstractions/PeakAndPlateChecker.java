@@ -8,11 +8,12 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public interface InputProcessor {
-    void processInput(Supplier<String> readLine,
+public interface PeakAndPlateChecker {
+    void checkPeakAndPlate(Supplier<String> readLineSupplier,
+                      Supplier<ITransitRegulator> transitRegulatorSupplier,
                       Function<String, ILicensePlateNumber> parseLicensePlateNumber,
                       Function<String, LocalDate> parseDate,
                       Function<String, LocalTime> parseTime,
-                      Consumer<IResponse> writeOutput);
+                      Consumer<IResponse> writeOutputConsumer);
 }
 
