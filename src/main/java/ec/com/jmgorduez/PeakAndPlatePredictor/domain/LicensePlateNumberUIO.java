@@ -26,6 +26,10 @@ public class LicensePlateNumberUIO implements ILicensePlateNumber {
         LicensePlateNumberClassifier(DayOfWeek dayOfWeekCanBeNotOnRoad){
             this.dayOfWeekCanBeNotOnRoad = dayOfWeekCanBeNotOnRoad;
         }
+
+        public boolean canBeOnRoadAt(DayOfWeek dayOfWeek){
+            return !this.dayOfWeekCanBeNotOnRoad.equals(dayOfWeek);
+        }
     }
 
     private final LicensePlateNumberClassifier licensePlateNumberClassifier;
@@ -45,11 +49,8 @@ public class LicensePlateNumberUIO implements ILicensePlateNumber {
         if(isNotAPeakAndPlateDate(date, isAPeakAndPlateDate)){
             return CAN_BE_ON_THE_ROAD;
         }
-        return isMonday(date) ? CAN_BE_NOT_ON_THE_ROAD : CAN_BE_ON_THE_ROAD;
-    }
-
-    private boolean isMonday(LocalDate date) {
-        return date.getDayOfWeek().equals(MONDAY);
+        return licensePlateNumberClassifier.canBeOnRoadAt(date.getDayOfWeek())
+                ? CAN_BE_ON_THE_ROAD : CAN_BE_NOT_ON_THE_ROAD;
     }
 
     private boolean isNotAPeakAndPlateDate(LocalDate date, Function<LocalDate, Boolean> isAPeakAndPlateDate) {
