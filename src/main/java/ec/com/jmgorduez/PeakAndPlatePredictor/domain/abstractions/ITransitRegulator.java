@@ -7,5 +7,4 @@ import java.time.LocalTime;
 public interface ITransitRegulator {
     Boolean isAPeakAndPlateDayOfWeek(LocalDate date);
     Boolean isAPeakAndPlateTime(LocalTime time);
-    ILicensePlateNumber licensePlateNumberOn(String value, LocalDate date);
 }

@@ -11,9 +11,9 @@ import java.util.function.Supplier;
 public interface PeakAndPlateChecker {
     void checkPeakAndPlate(Supplier<String> readLineSupplier,
                       Supplier<ITransitRegulator> transitRegulatorSupplier,
-                      Function<String, ILicensePlateNumber> parseLicensePlateNumber,
-                      Function<String, LocalDate> parseDate,
-                      Function<String, LocalTime> parseTime,
+                      Function<String, ILicensePlateNumber> instanceLicensePlateNumber,
+                      Function<String, LocalDate> instanceDate,
+                      Function<String, LocalTime> instanceTime,
                       Consumer<IResponse> writeOutputConsumer);
 }
 
