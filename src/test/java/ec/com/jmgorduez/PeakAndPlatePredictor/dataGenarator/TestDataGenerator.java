@@ -5,7 +5,8 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO.LicensePlateNumberTypeUIO.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS;
 
 public class TestDataGenerator {
 
@@ -19,4 +20,10 @@ public class TestDataGenerator {
     public static final LocalDate _19_04_2019 = LocalDate.parse("2019-04-19");
 
     public static final LocalTime _07_00 = LocalTime.parse("07:00");
+    public static final LocalTime _08_00 = LocalTime.parse("08:00");
+    public static final LocalTime _09_30 = LocalTime.parse("09:30");
+    public static final LocalTime _09_31 = LocalTime.parse("09:31");
+    public static final LocalTime _16_00 = LocalTime.parse("16:00");
+    public static final LocalTime _19_30 = LocalTime.parse("19:30");
+    public static final LocalTime _19_31 = LocalTime.parse("19:31");
 }
