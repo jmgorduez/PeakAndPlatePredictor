@@ -9,8 +9,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public interface ILicensePlateNumber {
-    PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date,
-                                            LocalTime time,
+    PeakAndPlateStatus peakAndPlateStatusAt(LocalTime time,
                                             Function<DayOfWeek, Boolean> isAPeakAndPlateDayOfWeek,
                                             Function<LocalTime, Boolean> isAPeakAndPlateTime);
 }
