@@ -5,8 +5,6 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateWithLastNumberZ
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static org.mockito.ArgumentMatchers.any;
-
 public class TestDataGenerator {
     public static final LocalDate _15_04_2019 = LocalDate.parse("2019-04-15");
     public static final LocalDate _16_04_2019 = LocalDate.parse("2019-04-16");
