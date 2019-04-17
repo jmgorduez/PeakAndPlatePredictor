@@ -52,11 +52,4 @@ class TransitRegulatoryAgencyUIOTest {
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8585))
                 .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
     }
-
-    @Test
-    void generateLicensePlateNumberTypeUIOListHashMap(){
-        assertThat(TransitRegulatoryAgencyUIO.generateLicensePlateNumberTypeUIOListHashMap()
-                .get(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS))
-                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
-    }
 }
