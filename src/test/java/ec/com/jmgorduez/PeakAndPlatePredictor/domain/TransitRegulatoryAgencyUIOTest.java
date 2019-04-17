@@ -21,6 +21,10 @@ class TransitRegulatoryAgencyUIOTest {
 
     @Test
     void isAPeakAndPlateDate() {
+        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateDate(_20_04_2019))
+                .isFalse();
+        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateDate(_15_04_2019))
+                .isTrue();
     }
 
     @Test
