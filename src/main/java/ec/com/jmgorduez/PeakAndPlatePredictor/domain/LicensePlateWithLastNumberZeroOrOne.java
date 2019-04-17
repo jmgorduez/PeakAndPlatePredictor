@@ -8,6 +8,11 @@ import java.time.LocalTime;
 import java.util.function.Function;
 
 public class LicensePlateWithLastNumberZeroOrOne implements ILicensePlateNumber {
+
+    public LicensePlateWithLastNumberZeroOrOne(String value){
+
+    }
+
     @Override
     public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date,
                                                    LocalTime time,
