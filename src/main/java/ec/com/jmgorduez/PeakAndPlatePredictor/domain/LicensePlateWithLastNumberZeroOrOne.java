@@ -9,8 +9,9 @@ import java.util.function.Function;
 
 public class LicensePlateWithLastNumberZeroOrOne implements ILicensePlateNumber {
     @Override
-    public PeakAndPlateStatus peakAndPlateStatusAt(LocalTime time,
-                                                   Function<LocalDate, Boolean> isAPeakAndPlateDay,
+    public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date,
+                                                   LocalTime time,
+                                                   Function<LocalDate, Boolean> isAPeakAndPlateDate,
                                                    Function<LocalTime, Boolean> isAPeakAndPlateTime) {
         return null;
     }
