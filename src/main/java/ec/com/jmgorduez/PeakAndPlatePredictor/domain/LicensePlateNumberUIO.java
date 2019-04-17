@@ -40,4 +40,16 @@ public class LicensePlateNumberUIO implements ILicensePlateNumber {
     private boolean isNotAPeakAndPlateTime(LocalTime time, Function<LocalTime, Boolean> isAPeakAndPlateTime) {
         return !isAPeakAndPlateTime.apply(time);
     }
+
+    @Override
+    public boolean equals(Object other){
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof LicensePlateNumberUIO)) {
+            return false;
+        }
+        return this.licensePlateNumberTypeUIO
+                .equals(((LicensePlateNumberUIO)other).licensePlateNumberTypeUIO);
+    }
 }
