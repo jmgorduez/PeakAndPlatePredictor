@@ -14,7 +14,7 @@ import static java.time.DayOfWeek.*;
 
 public class LicensePlateNumberUIO implements ILicensePlateNumber {
 
-    public enum LicensePlateNumberClassifier{
+    public enum LicensePlateNumberTypeUIO {
         LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS(MONDAY),
         LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_TUESDAYS(TUESDAY),
         LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS(WEDNESDAY),
@@ -23,33 +23,32 @@ public class LicensePlateNumberUIO implements ILicensePlateNumber {
 
         private final DayOfWeek dayOfWeekCanBeNotOnRoad;
 
-        LicensePlateNumberClassifier(DayOfWeek dayOfWeekCanBeNotOnRoad){
+        LicensePlateNumberTypeUIO(DayOfWeek dayOfWeekCanBeNotOnRoad) {
             this.dayOfWeekCanBeNotOnRoad = dayOfWeekCanBeNotOnRoad;
         }
 
-        public boolean canBeOnRoadAt(DayOfWeek dayOfWeek){
+        public boolean canBeOnRoadAt(DayOfWeek dayOfWeek) {
             return !this.dayOfWeekCanBeNotOnRoad.equals(dayOfWeek);
         }
     }
 
-    private final LicensePlateNumberClassifier licensePlateNumberClassifier;
+    private final LicensePlateNumberTypeUIO licensePlateNumberTypeUIO;
 
-    public LicensePlateNumberUIO(LicensePlateNumberClassifier licensePlateNumberClassifier) {
-        this.licensePlateNumberClassifier = licensePlateNumberClassifier;
+    public LicensePlateNumberUIO(LicensePlateNumberTypeUIO licensePlateNumberTypeUIO) {
+        this.licensePlateNumberTypeUIO = licensePlateNumberTypeUIO;
     }
 
     @Override
-    public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date,
-                                                   LocalTime time,
+    public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date, LocalTime time,
                                                    Function<LocalDate, Boolean> isAPeakAndPlateDate,
                                                    Function<LocalTime, Boolean> isAPeakAndPlateTime) {
-        if(isNotAPeakAndPlateTime(time, isAPeakAndPlateTime)){
+        if (isNotAPeakAndPlateTime(time, isAPeakAndPlateTime)) {
             return CAN_BE_ON_THE_ROAD;
         }
-        if(isNotAPeakAndPlateDate(date, isAPeakAndPlateDate)){
+        if (isNotAPeakAndPlateDate(date, isAPeakAndPlateDate)) {
             return CAN_BE_ON_THE_ROAD;
         }
-        return licensePlateNumberClassifier.canBeOnRoadAt(date.getDayOfWeek())
+        return licensePlateNumberTypeUIO.canBeOnRoadAt(date.getDayOfWeek())
                 ? CAN_BE_ON_THE_ROAD : CAN_BE_NOT_ON_THE_ROAD;
     }
 

@@ -5,7 +5,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO.LicensePlateNumberClassifier.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.LicensePlateNumberUIO.LicensePlateNumberTypeUIO.*;
 
 public class TestDataGenerator {
 
