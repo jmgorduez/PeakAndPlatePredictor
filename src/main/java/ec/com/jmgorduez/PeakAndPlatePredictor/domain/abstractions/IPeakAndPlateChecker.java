@@ -10,8 +10,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public interface PeakAndPlateChecker {
-    void checkPeakAndPlate(Supplier<String> readLineSupplier,
+public interface IPeakAndPlateChecker {
+     void checkPeakAndPlate(Supplier<String> readLineSupplier,
                       Supplier<ITransitRegulatoryAgency> transitRegulatorSupplier,
                       Function<String, ILicensePlateNumber> instanceLicensePlateNumber,
                       Function<String, LocalDate> instanceDate,
