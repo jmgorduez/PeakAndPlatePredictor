@@ -4,16 +4,23 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILicensePlateN
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ITransitRegulatoryAgency;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
+import static java.time.DayOfWeek.SATURDAY;
+import static java.time.DayOfWeek.SUNDAY;
 
 public class TransitRegulatoryAgencyUIO implements ITransitRegulatoryAgency {
 
     @Override
     public Boolean isAPeakAndPlateDate(LocalDate date) {
-        return null;
+        return isNotAWeekendDay(date);
+    }
+
+    private boolean isNotAWeekendDay(LocalDate date) {
+        return !(SATURDAY.equals(date.getDayOfWeek()) || SUNDAY.equals(date.getDayOfWeek()));
     }
 
     @Override
