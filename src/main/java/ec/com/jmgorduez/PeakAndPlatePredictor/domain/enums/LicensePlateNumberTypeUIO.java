@@ -33,7 +33,7 @@ public enum LicensePlateNumberTypeUIO {
 
     public static Optional<LicensePlateNumberTypeUIO> instance(Integer lastNumber) {
         return Arrays.stream(values())
-                .filter(itRepresentsToThisLastNumber(lastNumber))
+                .filter(itRepresentsThisLastNumber(lastNumber))
                 .reduce(selectUniqueElement());
     }
 
@@ -41,7 +41,7 @@ public enum LicensePlateNumberTypeUIO {
         return (licensePlateNumberTypeUIO, licensePlateNumberTypeUIO2) -> licensePlateNumberTypeUIO;
     }
 
-    private static Predicate<LicensePlateNumberTypeUIO> itRepresentsToThisLastNumber(Integer lastNumberCanBeNotOnRoad) {
+    private static Predicate<LicensePlateNumberTypeUIO> itRepresentsThisLastNumber(Integer lastNumberCanBeNotOnRoad) {
         return licensePlateNumberTypeUIO ->
                 licensePlateNumberTypeUIO.lastNumbersCanBeNotOnRoad.contains(lastNumberCanBeNotOnRoad);
     }
