@@ -33,4 +33,6 @@ public class TestDataGenerator {
     public static final LocalTime _16_00 = LocalTime.parse("16:00");
     public static final LocalTime _19_30 = LocalTime.parse("19:30");
     public static final LocalTime _19_31 = LocalTime.parse("19:31");
+
+    public static final String PCI_8580_2019_04_15_07_00 = "PCI8580 2019-04-15 07:00";
 }

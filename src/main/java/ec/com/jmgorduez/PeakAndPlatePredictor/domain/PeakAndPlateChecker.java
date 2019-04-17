@@ -13,7 +13,11 @@ import java.util.function.Supplier;
 
 public class PeakAndPlateChecker implements IPeakAndPlateChecker {
     @Override
-    public void checkPeakAndPlate(Supplier<String> readLineSupplier, Supplier<ITransitRegulatoryAgency> transitRegulatorSupplier, Function<String, ILicensePlateNumber> instanceLicensePlateNumber, Function<String, LocalDate> instanceDate, Function<String, LocalTime> instanceTime, BiConsumer<String, PeakAndPlateStatus> writeOutputConsumer) {
+    public void checkPeakAndPlate(Supplier<String> readLineSupplier,
+                                  Supplier<ITransitRegulatoryAgency> transitRegulatorSupplier,
+                                  Function<String, LocalDate> instanceDate,
+                                  Function<String, LocalTime> instanceTime,
+                                  BiConsumer<String, PeakAndPlateStatus> writeOutputConsumer) {
 
     }
 }
