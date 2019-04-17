@@ -1,0 +1,17 @@
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
+
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILicensePlateNumber;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.function.Function;
+
+public class LicensePlateWithLastNumberZeroOrOne implements ILicensePlateNumber {
+    @Override
+    public PeakAndPlateStatus peakAndPlateStatusAt(LocalTime time,
+                                                   Function<LocalDate, Boolean> isAPeakAndPlateDay,
+                                                   Function<LocalTime, Boolean> isAPeakAndPlateTime) {
+        return null;
+    }
+}
