@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
@@ -17,39 +18,33 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE
 
 public class PeakAndPlateChecker implements IPeakAndPlateChecker {
 
-    private Function<String, LocalDate> instanceDate;
-    private Function<String, LocalTime> instanceTime;
     private Function<String, IPeakAndPlateRule> instancePeakAndPlateRule;
+    private Function<String, IPeakAndPlateLineSplitter> instanPeakAndPlateLineSplitter;
 
-    public PeakAndPlateChecker(Function<String, LocalDate> instanceDate,
-                               Function<String, LocalTime> instanceTime) {
-        this.instanceDate = instanceDate;
-        this.instanceTime = instanceTime;
+    public PeakAndPlateChecker(Function<String, IPeakAndPlateLineSplitter> instanPeakAndPlateLineSplitter,
+                               Function<String, IPeakAndPlateRule> instancePeakAndPlateRule) {
+        this.instancePeakAndPlateRule = instancePeakAndPlateRule;
+        this.instanPeakAndPlateLineSplitter = instanPeakAndPlateLineSplitter;
     }
 
     @Override
     public void checkPeakAndPlate(Supplier<String> readInputLine,
-                                  Function<String, IPeakAndPlateRule> instancePeakAndPlateRule,
                                   BiConsumer<String, PeakAndPlateStatus> writeOutputLine) {
-        this.instancePeakAndPlateRule = instancePeakAndPlateRule;
         String inputLine = readInputLine.get();
         if (isNotEmptyLine(inputLine)) {
-            Queue<String> parameters = splitParameters(inputLine);
-            IPeakAndPlateRule peakAndPlateRule = instancePeakAndPlateRule(parameters::poll);
-            PeakAndPlateStatus peakAndPlateStatus
-                    = peakAndPlateRule.peakAndPlateStatusAt(instanceDate(parameters::poll),
-                    instanceTime(parameters::poll));
-            writeOutputLine.accept(inputLine, peakAndPlateStatus);
-            checkPeakAndPlate(readInputLine, instancePeakAndPlateRule, writeOutputLine);
+            IPeakAndPlateLineSplitter lineSplitter = lineSplitter(inputLine);
+            IPeakAndPlateRule peakAndPlateRule = instancePeakAndPlateRule(lineSplitter::licensePlateNumber);
+            writeOutputLine.accept(inputLine, peakAndPlateStatus(lineSplitter, peakAndPlateRule));
+            checkPeakAndPlate(readInputLine, writeOutputLine);
         }
     }
 
-    private LocalTime instanceTime(Supplier<String> timeString) {
-        return instanceTime.apply(timeString.get());
+    private PeakAndPlateStatus peakAndPlateStatus(IPeakAndPlateLineSplitter lineSplitter, IPeakAndPlateRule peakAndPlateRule) {
+        return peakAndPlateRule.peakAndPlateStatusAt(lineSplitter.date(), lineSplitter.time());
     }
 
-    private LocalDate instanceDate(Supplier<String> dateString) {
-        return instanceDate.apply(dateString.get());
+    private IPeakAndPlateLineSplitter lineSplitter(String inputLine) {
+        return instanPeakAndPlateLineSplitter.apply(inputLine);
     }
 
     private IPeakAndPlateRule instancePeakAndPlateRule(Supplier<String> licensePlateNumberString) {

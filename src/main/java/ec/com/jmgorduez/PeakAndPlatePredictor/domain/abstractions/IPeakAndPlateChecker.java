@@ -11,7 +11,6 @@ import java.util.function.Supplier;
 
 public interface IPeakAndPlateChecker {
     void checkPeakAndPlate(Supplier<String> readInputLine,
-                           Function<String, IPeakAndPlateRule> instancePeakAndPlateRule,
                            BiConsumer<String, PeakAndPlateStatus> writeOutputLine);
 }
 
