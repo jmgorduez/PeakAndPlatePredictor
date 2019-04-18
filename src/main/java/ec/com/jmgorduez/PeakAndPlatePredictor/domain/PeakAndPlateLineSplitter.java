@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 public class PeakAndPlateLineSplitter implements IPeakAndPlateLineSplitter {
 
-    public PeakAndPlateLineSplitter(){
+    public PeakAndPlateLineSplitter(String line){
 
     }
 
