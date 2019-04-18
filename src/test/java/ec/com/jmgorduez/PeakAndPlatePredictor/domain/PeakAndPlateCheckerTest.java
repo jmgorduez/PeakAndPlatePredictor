@@ -31,8 +31,7 @@ class PeakAndPlateCheckerTest {
     void setUp() {
         peakAndPlateRuleFactoryUIO = new PeakAndPlateRuleFactoryUIO();
         peakAndPlateCheckerUnderTest
-                = new PeakAndPlateChecker(LocalDate::parse,
-                LocalTime::parse);
+                = new PeakAndPlateChecker(null, peakAndPlateRuleFactoryUIO::instanceRule);
         inputs = new ArrayDeque<>(Stream
                 .of(PCI_8580_2019_04_15_07_00, PCI_8580_2019_04_15_10_00, PCI_8581_2019_04_16_07_00)
                 .collect(Collectors.toList()));
@@ -43,7 +42,7 @@ class PeakAndPlateCheckerTest {
     void checkPeakAndPlateEmptyInput() {
         inputs.clear();
         peakAndPlateCheckerUnderTest
-                .checkPeakAndPlate(inputs::poll, peakAndPlateRuleFactoryUIO::instanceRule, this::writeOutput);
+                .checkPeakAndPlate(inputs::poll, this::writeOutput);
         assertThat(outputs.isEmpty())
                 .isTrue();
     }
@@ -51,7 +50,7 @@ class PeakAndPlateCheckerTest {
     @Test
     void checkPeakAndPlate() {
         peakAndPlateCheckerUnderTest
-                .checkPeakAndPlate(inputs::poll, peakAndPlateRuleFactoryUIO::instanceRule, this::writeOutput);
+                .checkPeakAndPlate(inputs::poll, this::writeOutput);
         assertThat(outputs.isEmpty())
                 .isFalse();
         assertThat(outputs.get(ZERO))
