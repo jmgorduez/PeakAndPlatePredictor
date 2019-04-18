@@ -19,6 +19,20 @@ class LocalDateCheckerUIOTest {
 
     @Test
     void isNotAHoliday() {
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_15_04_2019))
+                .isTrue();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_04_11_2019))
+                .isFalse();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_01_01_2019))
+                .isFalse();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_20_04_2019))
+                .isTrue();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_03_11_2019))
+                .isTrue();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_24_05_2019))
+                .isFalse();
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_01_01_2019))
+                .isTrue();
     }
 
     @Test
