@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 public enum PeakAndPlateStatus {
     CAN_BE_ON_THE_ROAD,

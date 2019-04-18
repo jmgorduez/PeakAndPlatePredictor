@@ -1,11 +1,10 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PeakAndPlateRuleUIOTest {
@@ -88,20 +87,5 @@ class PeakAndPlateRuleUIOTest {
                 .isTrue();
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateTime(_19_31))
                 .isFalse();
-    }
-
-    @Test
-    void equals() {
-        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
-        assertThat(licensePlateNumberUIOUnderTest.equals(licensePlateNumberUIOUnderTest))
-                .isTrue();
-        assertThat(licensePlateNumberUIOUnderTest.equals(this))
-                .isFalse();
-        assertThat(licensePlateNumberUIOUnderTest
-                .equals(new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_TUESDAYS)))
-                .isFalse();
-        assertThat(licensePlateNumberUIOUnderTest
-                .equals(new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_MONDAYS)))
-                .isTrue();
     }
 }

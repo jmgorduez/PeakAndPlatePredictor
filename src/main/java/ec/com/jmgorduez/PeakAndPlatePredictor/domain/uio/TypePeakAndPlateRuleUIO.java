@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
 import java.time.DayOfWeek;
 import java.util.Arrays;

@@ -3,19 +3,13 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Queue;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_STRING;
 import static java.util.Optional.ofNullable;
 
 public class PeakAndPlateChecker implements IPeakAndPlateChecker {

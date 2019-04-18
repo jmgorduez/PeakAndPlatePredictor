@@ -1,5 +1,6 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.LocalDateCheckerUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

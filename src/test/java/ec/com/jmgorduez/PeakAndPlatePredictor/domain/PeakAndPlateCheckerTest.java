@@ -2,7 +2,7 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRuleFactory;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 

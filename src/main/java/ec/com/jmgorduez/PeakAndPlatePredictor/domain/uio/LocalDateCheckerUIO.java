@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILocalDateChecker;
 
