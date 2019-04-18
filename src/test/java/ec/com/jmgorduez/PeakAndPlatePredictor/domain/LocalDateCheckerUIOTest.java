@@ -30,4 +30,13 @@ class LocalDateCheckerUIOTest {
         assertThat(localDateCheckerUIOUnderTest.isNotAWeekendDay(_21_04_2019))
                 .isFalse();
     }
+
+    @Test
+    void holidays() {
+        assertThat(localDateCheckerUIOUnderTest.holidays(_2019))
+                .contains(_01_01_2019)
+                .contains(_04_11_2019)
+                .doesNotContain(_03_11_2019)
+                .doesNotContain(_15_04_2019);
+    }
 }

@@ -4,6 +4,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateRuleUIO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Year;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
 
@@ -28,7 +29,10 @@ public class TestDataGenerator {
     public static final LocalDate _20_04_2019 = LocalDate.parse("2019-04-20");
     public static final LocalDate _21_04_2019 = LocalDate.parse("2019-04-21");
     public static final LocalDate _24_05_2019 = LocalDate.parse("2019-05-24");
+    public static final LocalDate _03_11_2019 = LocalDate.parse("2019-11-03");
     public static final LocalDate _04_11_2019 = LocalDate.parse("2019-11-04");
+
+    public static final Year _2019 = Year.parse("2019");
 
     public static final LocalTime _07_00 = LocalTime.parse("07:00");
     public static final LocalTime _08_00 = LocalTime.parse("08:00");
