@@ -2,6 +2,8 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
+
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
@@ -35,6 +37,14 @@ class PeakAndPlateRuleUIOTest {
     }
 
     @Test
+    void peakAndPlateStatusOnSaturdays() {
+        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS;
+        assertThat(licensePlateNumberUIOUnderTest
+                .peakAndPlateStatusAt(_20_04_2019, _08_00))
+                .isEqualTo(CAN_BE_ON_THE_ROAD);
+    }
+
+    @Test
     void peakAndPlateStatusAtNoPeakAndPlateDate() {
         licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest
@@ -57,6 +67,8 @@ class PeakAndPlateRuleUIOTest {
                 .isFalse();
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_15_04_2019))
                 .isTrue();
+        assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_24_05_2019))
+                .isFalse();
     }
 
     @Test
