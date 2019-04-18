@@ -32,5 +32,7 @@ class PeakAndPlateLineSplitterTest {
 
     @Test
     void time() {
+        assertThat(peakAndPlateLineSplitterUnderTest.time())
+                .isEqualTo(_07_00);
     }
 }
