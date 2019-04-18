@@ -5,16 +5,16 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateRuleUIO;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
 
 public class TestDataGenerator {
 
     public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS
-            = new PeakAndPlateRuleUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS);
+            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_MONDAYS);
     public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS
-            = new PeakAndPlateRuleUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS);
+            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS);
     public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS
-            = new PeakAndPlateRuleUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS);
+            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_FRIDAYS);
 
     public static final String PCI_8580 = "PCI8580";
     public static final String PCI_8581 = "PCI8581";

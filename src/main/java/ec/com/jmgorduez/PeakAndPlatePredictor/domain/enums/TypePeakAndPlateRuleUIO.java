@@ -11,17 +11,17 @@ import java.util.stream.Collectors;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static java.time.DayOfWeek.*;
 
-public enum LicensePlateNumberTypeUIO {
-    LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS(MONDAY, ZERO, ONE),
-    LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_TUESDAYS(TUESDAY, TWO, THREE),
-    LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS(WEDNESDAY, FOUR, FIVE),
-    LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_THURSDAYS(THURSDAY, SIX, SEVEN),
-    LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_FRIDAYS(FRIDAY, EIGHT, NINE);
+public enum TypePeakAndPlateRuleUIO {
+    CAN_BE_NOT_ON_ROAD_ON_MONDAYS(MONDAY, ZERO, ONE),
+    CAN_BE_NOT_ON_ROAD_ON_TUESDAYS(TUESDAY, TWO, THREE),
+    CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS(WEDNESDAY, FOUR, FIVE),
+    CAN_BE_NOT_ON_ROAD_ON_THURSDAYS(THURSDAY, SIX, SEVEN),
+    CAN_BE_NOT_ON_ROAD_ON_FRIDAYS(FRIDAY, EIGHT, NINE);
 
     private final DayOfWeek dayOfWeekCanBeNotOnRoad;
     private final List<Integer> lastNumbers;
 
-    LicensePlateNumberTypeUIO(DayOfWeek dayOfWeekCanBeNotOnRoad, Integer... lastNumbers) {
+    TypePeakAndPlateRuleUIO(DayOfWeek dayOfWeekCanBeNotOnRoad, Integer... lastNumbers) {
         this.dayOfWeekCanBeNotOnRoad = dayOfWeekCanBeNotOnRoad;
         this.lastNumbers
                 = Arrays.stream(lastNumbers).collect(Collectors.toList());
@@ -31,17 +31,17 @@ public enum LicensePlateNumberTypeUIO {
         return !this.dayOfWeekCanBeNotOnRoad.equals(dayOfWeek);
     }
 
-    public static Optional<LicensePlateNumberTypeUIO> instance(Integer lastNumber) {
+    public static Optional<TypePeakAndPlateRuleUIO> instance(Integer lastNumber) {
         return Arrays.stream(values())
                 .filter(itRepresentsThisLastNumber(lastNumber))
                 .reduce(selectUniqueElement());
     }
 
-    private static BinaryOperator<LicensePlateNumberTypeUIO> selectUniqueElement() {
+    private static BinaryOperator<TypePeakAndPlateRuleUIO> selectUniqueElement() {
         return (licensePlateNumberTypeUIO, licensePlateNumberTypeUIO2) -> licensePlateNumberTypeUIO;
     }
 
-    private static Predicate<LicensePlateNumberTypeUIO> itRepresentsThisLastNumber(Integer lastNumberCanBeNotOnRoad) {
+    private static Predicate<TypePeakAndPlateRuleUIO> itRepresentsThisLastNumber(Integer lastNumberCanBeNotOnRoad) {
         return licensePlateNumberTypeUIO ->
                 licensePlateNumberTypeUIO.lastNumbers.contains(lastNumberCanBeNotOnRoad);
     }

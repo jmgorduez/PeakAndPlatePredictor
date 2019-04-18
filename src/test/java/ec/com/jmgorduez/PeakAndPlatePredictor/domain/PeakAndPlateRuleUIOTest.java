@@ -3,7 +3,7 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -86,10 +86,10 @@ class PeakAndPlateRuleUIOTest {
         assertThat(licensePlateNumberUIOUnderTest.equals(this))
                 .isFalse();
         assertThat(licensePlateNumberUIOUnderTest
-                .equals(new PeakAndPlateRuleUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_TUESDAYS)))
+                .equals(new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_TUESDAYS)))
                 .isFalse();
         assertThat(licensePlateNumberUIOUnderTest
-                .equals(new PeakAndPlateRuleUIO(LICENSE_PLATE_NUMBER_CAN_BE_NOT_ON_ROAD_ON_MONDAYS)))
+                .equals(new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_MONDAYS)))
                 .isTrue();
     }
 }

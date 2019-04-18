@@ -6,15 +6,12 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface IPeakAndPlateChecker {
-     void checkPeakAndPlate(Supplier<String> readLine,
-                      Supplier<ITransitRegulatoryAgency> transitRegulatoryAgency,
-                      Function<String, LocalDate> instanceDate,
-                      Function<String, LocalTime> instanceTime,
-                      BiConsumer<String, PeakAndPlateStatus> writeOutputConsumer);
+    void checkPeakAndPlate(Supplier<String> readInputLine,
+                           Function<String, IPeakAndPlateRule> instancePeakAndPlateRule,
+                           BiConsumer<String, PeakAndPlateStatus> writeOutputLine);
 }
 

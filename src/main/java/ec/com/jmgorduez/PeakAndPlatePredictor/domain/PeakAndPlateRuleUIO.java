@@ -1,7 +1,7 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.LicensePlateNumberTypeUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 
 import java.time.LocalDate;
@@ -16,10 +16,10 @@ import static java.time.DayOfWeek.SUNDAY;
 
 public class PeakAndPlateRuleUIO implements IPeakAndPlateRule {
 
-    private final LicensePlateNumberTypeUIO licensePlateNumberTypeUIO;
+    private final TypePeakAndPlateRuleUIO typePeakAndPlateRuleUIO;
 
-    public PeakAndPlateRuleUIO(LicensePlateNumberTypeUIO licensePlateNumberTypeUIO) {
-        this.licensePlateNumberTypeUIO = licensePlateNumberTypeUIO;
+    public PeakAndPlateRuleUIO(TypePeakAndPlateRuleUIO typePeakAndPlateRuleUIO) {
+        this.typePeakAndPlateRuleUIO = typePeakAndPlateRuleUIO;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class PeakAndPlateRuleUIO implements IPeakAndPlateRule {
         if (isNotAPeakAndPlateDate(date)) {
             return CAN_BE_ON_THE_ROAD;
         }
-        return licensePlateNumberTypeUIO.canBeOnRoadAt(date.getDayOfWeek())
+        return typePeakAndPlateRuleUIO.canBeOnRoadAt(date.getDayOfWeek())
                 ? CAN_BE_ON_THE_ROAD : CAN_BE_NOT_ON_THE_ROAD;
     }
 
@@ -65,7 +65,7 @@ public class PeakAndPlateRuleUIO implements IPeakAndPlateRule {
         if (!(other instanceof PeakAndPlateRuleUIO)) {
             return false;
         }
-        return this.licensePlateNumberTypeUIO
-                .equals(((PeakAndPlateRuleUIO)other).licensePlateNumberTypeUIO);
+        return this.typePeakAndPlateRuleUIO
+                .equals(((PeakAndPlateRuleUIO)other).typePeakAndPlateRuleUIO);
     }
 }
