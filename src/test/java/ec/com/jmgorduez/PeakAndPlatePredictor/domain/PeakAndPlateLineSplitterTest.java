@@ -8,7 +8,6 @@ import java.time.LocalTime;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PeakAndPlateLineSplitterTest {
 
@@ -29,7 +28,7 @@ class PeakAndPlateLineSplitterTest {
     @Test
     void date() {
         assertThat(peakAndPlateLineSplitterUnderTest.date())
-                .isEqualTo(_15_04_2019);
+                .isEqualTo(APR_15_2019);
     }
 
     @Test

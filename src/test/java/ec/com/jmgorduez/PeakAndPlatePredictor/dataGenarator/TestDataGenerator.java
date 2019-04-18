@@ -22,16 +22,16 @@ public class TestDataGenerator {
     public static final String PCI_8584 = "PCI8584";
     public static final String PCI_8585 = "PCI8585";
 
-    public static final LocalDate _01_01_2019 = LocalDate.parse("2019-01-01");
-    public static final LocalDate _15_04_2019 = LocalDate.parse("2019-04-15");
-    public static final LocalDate _16_04_2019 = LocalDate.parse("2019-04-16");
-    public static final LocalDate _19_04_2019 = LocalDate.parse("2019-04-19");
-    public static final LocalDate _20_04_2019 = LocalDate.parse("2019-04-20");
-    public static final LocalDate _21_04_2019 = LocalDate.parse("2019-04-21");
-    public static final LocalDate _01_05_2019 = LocalDate.parse("2019-05-01");
-    public static final LocalDate _24_05_2019 = LocalDate.parse("2019-05-24");
-    public static final LocalDate _03_11_2019 = LocalDate.parse("2019-11-03");
-    public static final LocalDate _04_11_2019 = LocalDate.parse("2019-11-04");
+    public static final LocalDate JAN_01_2019 = LocalDate.parse("2019-01-01");
+    public static final LocalDate APR_15_2019 = LocalDate.parse("2019-04-15");
+    public static final LocalDate APR_16_2019 = LocalDate.parse("2019-04-16");
+    public static final LocalDate APR_19_2019 = LocalDate.parse("2019-04-19");
+    public static final LocalDate APR_20_2019 = LocalDate.parse("2019-04-20");
+    public static final LocalDate APR_21_2019 = LocalDate.parse("2019-04-21");
+    public static final LocalDate MAY_01_2019 = LocalDate.parse("2019-05-01");
+    public static final LocalDate MAY_24_2019 = LocalDate.parse("2019-05-24");
+    public static final LocalDate NOV_03_2019 = LocalDate.parse("2019-11-03");
+    public static final LocalDate NOV_04_2019 = LocalDate.parse("2019-11-04");
 
     public static final Year _2019 = Year.parse("2019");
 
