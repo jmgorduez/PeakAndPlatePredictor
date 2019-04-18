@@ -16,11 +16,15 @@ public class PeakAndPlateLineSplitter implements IPeakAndPlateLineSplitter {
 
     private String licensePlateNumber;
     private LocalDate date;
+    private LocalTime time;
 
-    public PeakAndPlateLineSplitter(String line, Function<String, LocalDate> instanceDate){
+    public PeakAndPlateLineSplitter(String line,
+                                    Function<String, LocalDate> instanceDate,
+                                    Function<String, LocalTime> instanceTime){
         Queue<String> lineElements = new ArrayDeque<>(Arrays.asList(line.split(BLANK_SPACE_STRING)));
         licensePlateNumber = lineElements.poll();
         date = instanceDate.apply(lineElements.poll());
+        time = instanceTime.apply(lineElements.poll());
     }
 
     @Override
@@ -35,6 +39,6 @@ public class PeakAndPlateLineSplitter implements IPeakAndPlateLineSplitter {
 
     @Override
     public LocalTime time() {
-        return null;
+        return time;
     }
 }
