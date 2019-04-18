@@ -4,7 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.time.LocalDate;
 
-public interface ILocalDateChecker {
+public interface INonWorkingDateChecker {
     Boolean isNotAHoliday(LocalDate date);
     Boolean isNotAWeekendDay(LocalDate date);
 }

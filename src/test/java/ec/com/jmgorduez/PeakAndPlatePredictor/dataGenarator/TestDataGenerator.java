@@ -1,6 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.LocalDateCheckerUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.NonWorkingDateCheckerUIO;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleUIO;
 
 import java.time.LocalDate;
@@ -11,12 +11,12 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlate
 
 public class TestDataGenerator {
 
-    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_MONDAYS
-            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_MONDAYS, new LocalDateCheckerUIO());
-    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS
-            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS, new LocalDateCheckerUIO());
-    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_FRIDAYS
-            = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_FRIDAYS, new LocalDateCheckerUIO());
+    public static final PeakAndPlateRuleUIO MONDAYS_NOT_ON_THE_ROAD
+            = new PeakAndPlateRuleUIO(MONDAYS_NOT_ON_ROAD, new NonWorkingDateCheckerUIO());
+    public static final PeakAndPlateRuleUIO WEDNESDAYS_NOT_ON_THE_ROAD
+            = new PeakAndPlateRuleUIO(WEDNESDAYS_NOT_ON_ROAD, new NonWorkingDateCheckerUIO());
+    public static final PeakAndPlateRuleUIO FRIDAYS_NOT_ON_THE_ROAD
+            = new PeakAndPlateRuleUIO(FRIDAYS_NOT_ON_ROAD, new NonWorkingDateCheckerUIO());
 
     public static final String PCI_8580 = "PCI8580";
     public static final String PCI_8581 = "PCI8581";

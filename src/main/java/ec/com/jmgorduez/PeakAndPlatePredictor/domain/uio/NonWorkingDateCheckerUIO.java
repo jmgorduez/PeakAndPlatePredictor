@@ -1,6 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILocalDateChecker;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.INonWorkingDateChecker;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
@@ -13,7 +13,7 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.DECEMBER_25
 import static java.time.DayOfWeek.*;
 import static java.time.DayOfWeek.FRIDAY;
 
-public class LocalDateCheckerUIO implements ILocalDateChecker {
+public class NonWorkingDateCheckerUIO implements INonWorkingDateChecker {
     @Override
     public Boolean isNotAHoliday(LocalDate date) {
         return !holidays(Year.from(date)).contains(date);

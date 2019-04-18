@@ -1,23 +1,23 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILocalDateChecker;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.INonWorkingDateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus;
 
 import java.time.*;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants._19_31;
 
 public class PeakAndPlateRuleUIO implements IPeakAndPlateRule {
 
     private final TypePeakAndPlateRuleUIO typePeakAndPlateRuleUIO;
-    private final ILocalDateChecker localDateChecker;
+    private final INonWorkingDateChecker localDateChecker;
 
     public PeakAndPlateRuleUIO(TypePeakAndPlateRuleUIO typePeakAndPlateRuleUIO,
-                               ILocalDateChecker localDateChecker) {
+                               INonWorkingDateChecker localDateChecker) {
         this.typePeakAndPlateRuleUIO = typePeakAndPlateRuleUIO;
         this.localDateChecker = localDateChecker;
     }
@@ -37,13 +37,13 @@ public class PeakAndPlateRuleUIO implements IPeakAndPlateRule {
     @Override
     public PeakAndPlateStatus peakAndPlateStatusAt(LocalDate date, LocalTime time) {
         if (isNotAPeakAndPlateTime(time)) {
-            return CAN_BE_ON_THE_ROAD;
+            return ON_THE_ROAD;
         }
         if (isNotAPeakAndPlateDate(date)) {
-            return CAN_BE_ON_THE_ROAD;
+            return ON_THE_ROAD;
         }
         return typePeakAndPlateRuleUIO.canBeOnRoadAt(date.getDayOfWeek())
-                ? CAN_BE_ON_THE_ROAD : CAN_BE_NOT_ON_THE_ROAD;
+                ? ON_THE_ROAD : NOT_ON_THE_ROAD;
     }
 
     private boolean isNotAPeakAndPlateDate(LocalDate date) {

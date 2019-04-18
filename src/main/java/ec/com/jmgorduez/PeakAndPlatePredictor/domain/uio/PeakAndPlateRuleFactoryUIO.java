@@ -10,7 +10,7 @@ public class PeakAndPlateRuleFactoryUIO implements IPeakAndPlateRuleFactory {
     @Override
     public IPeakAndPlateRule instanceRule(String value) {
         Integer lastNumber = lastCharacter(value);
-        return new PeakAndPlateRuleUIO(TypePeakAndPlateRuleUIO.instance(lastNumber).get(), new LocalDateCheckerUIO());
+        return new PeakAndPlateRuleUIO(TypePeakAndPlateRuleUIO.instance(lastNumber).get(), new NonWorkingDateCheckerUIO());
     }
 
     private int lastCharacter(String value) {

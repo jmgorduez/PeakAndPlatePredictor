@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlateRuleUIO;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlateRuleUIO.*;
@@ -16,20 +15,20 @@ class TypePeakAndPlateRuleUIOTest {
 
     @Test
     void canBeOnRoadAt() {
-        assertThat(CAN_BE_NOT_ON_ROAD_ON_TUESDAYS.canBeOnRoadAt(FRIDAY))
+        assertThat(TUESDAYS_NOT_ON_ROAD.canBeOnRoadAt(FRIDAY))
                 .isTrue();
-        assertThat(CAN_BE_NOT_ON_ROAD_ON_FRIDAYS.canBeOnRoadAt(FRIDAY))
+        assertThat(FRIDAYS_NOT_ON_ROAD.canBeOnRoadAt(FRIDAY))
                 .isFalse();
-        assertThat(CAN_BE_NOT_ON_ROAD_ON_MONDAYS.canBeOnRoadAt(MONDAY))
+        assertThat(MONDAYS_NOT_ON_ROAD.canBeOnRoadAt(MONDAY))
                 .isFalse();
     }
 
     @Test
     void instance() {
         assertThat(TypePeakAndPlateRuleUIO.instance(ZERO))
-                .isEqualTo(of(CAN_BE_NOT_ON_ROAD_ON_MONDAYS));
+                .isEqualTo(of(MONDAYS_NOT_ON_ROAD));
         assertThat(TypePeakAndPlateRuleUIO.instance(NINE))
-                .isEqualTo(of(CAN_BE_NOT_ON_ROAD_ON_FRIDAYS));
+                .isEqualTo(of(FRIDAYS_NOT_ON_ROAD));
         assertThat(TypePeakAndPlateRuleUIO.instance(Integer.MAX_VALUE))
                 .isEqualTo(empty());
     }

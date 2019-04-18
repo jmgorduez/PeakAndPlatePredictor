@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,13 +20,13 @@ class PeakAndPlateRuleFactoryUIOTest {
     void instanceRule() {
 
         assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8580)))
-                .isEqualTo(refEq(CAN_NOT_ON_THE_ROAD_ON_MONDAYS));
+                .isEqualTo(refEq(MONDAYS_NOT_ON_THE_ROAD));
         assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8581)))
-                .isEqualTo(refEq(CAN_NOT_ON_THE_ROAD_ON_MONDAYS));
+                .isEqualTo(refEq(MONDAYS_NOT_ON_THE_ROAD));
         assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8584)))
-                .isEqualTo(refEq(CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS));
+                .isEqualTo(refEq(WEDNESDAYS_NOT_ON_THE_ROAD));
         assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8585)))
-                .isEqualTo(refEq(CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS));
+                .isEqualTo(refEq(WEDNESDAYS_NOT_ON_THE_ROAD));
     }
 
 }

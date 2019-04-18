@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.CAN_BE_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -56,13 +56,13 @@ class PeakAndPlateCheckerTest {
                 .isFalse();
         assertThat(outputs.get(ZERO))
                 .isEqualTo(PCI_8580_2019_04_15_07_00.concat(BLANK_SPACE_STRING)
-                        .concat(CAN_BE_NOT_ON_THE_ROAD.name()));
+                        .concat(NOT_ON_THE_ROAD.name()));
         assertThat(outputs.get(ONE))
                 .isEqualTo(PCI_8580_2019_04_15_10_00.concat(BLANK_SPACE_STRING)
-                        .concat(CAN_BE_ON_THE_ROAD.name()));
+                        .concat(ON_THE_ROAD.name()));
         assertThat(outputs.get(TWO))
                 .isEqualTo(PCI_8581_2019_04_16_07_00.concat(BLANK_SPACE_STRING)
-                        .concat(CAN_BE_ON_THE_ROAD.name()));
+                        .concat(ON_THE_ROAD.name()));
     }
 
     void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatusOutput) {
