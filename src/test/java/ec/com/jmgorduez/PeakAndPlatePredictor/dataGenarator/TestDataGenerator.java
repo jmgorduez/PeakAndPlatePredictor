@@ -27,6 +27,7 @@ public class TestDataGenerator {
     public static final LocalDate _19_04_2019 = LocalDate.parse("2019-04-19");
     public static final LocalDate _20_04_2019 = LocalDate.parse("2019-04-20");
     public static final LocalDate _24_05_2019 = LocalDate.parse("2019-05-24");
+    public static final LocalDate _04_11_2019 = LocalDate.parse("2019-11-04");
 
     public static final LocalTime _07_00 = LocalTime.parse("07:00");
     public static final LocalTime _08_00 = LocalTime.parse("08:00");
