@@ -18,13 +18,13 @@ class PeakAndPlateRuleFactoryUIOTest {
     @Test
     void instanceRule() {
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceRule(PCI_8580))
-                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
+                .isEqualTo(CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceRule(PCI_8581))
-                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
+                .isEqualTo(CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceRule(PCI_8584))
-                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
+                .isEqualTo(CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceRule(PCI_8585))
-                .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
+                .isEqualTo(CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
     }
 
 }

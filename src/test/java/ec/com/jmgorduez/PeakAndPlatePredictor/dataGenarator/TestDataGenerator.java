@@ -10,11 +10,11 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPla
 
 public class TestDataGenerator {
 
-    public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS
+    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_MONDAYS
             = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_MONDAYS);
-    public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS
+    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS
             = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_WEDNESDAYS);
-    public static final PeakAndPlateRuleUIO NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS
+    public static final PeakAndPlateRuleUIO CAN_NOT_ON_THE_ROAD_ON_FRIDAYS
             = new PeakAndPlateRuleUIO(CAN_BE_NOT_ON_ROAD_ON_FRIDAYS);
 
     public static final String PCI_8580 = "PCI8580";

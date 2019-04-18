@@ -2,8 +2,6 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalTime;
-
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.TypePeakAndPlateRuleUIO.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.CAN_BE_NOT_ON_THE_ROAD;
@@ -16,7 +14,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void peakAndPlateStatusOnMondays() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_15_04_2019, _08_00))
                 .isEqualTo(CAN_BE_NOT_ON_THE_ROAD);
@@ -27,7 +25,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void peakAndPlateStatusOnFridays() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_FRIDAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_19_04_2019, _07_00))
                 .isEqualTo(CAN_BE_NOT_ON_THE_ROAD);
@@ -38,7 +36,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void peakAndPlateStatusOnSaturdays() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_FRIDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_FRIDAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_20_04_2019, _08_00))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
@@ -46,7 +44,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateDate() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_16_04_2019, _09_31))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
@@ -54,7 +52,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void peakAndPlateStatusAtNoPeakAndPlateTime() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest
                 .peakAndPlateStatusAt(_16_04_2019, _19_31))
                 .isEqualTo(CAN_BE_ON_THE_ROAD);
@@ -62,7 +60,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void isAPeakAndPlateDate() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_20_04_2019))
                 .isFalse();
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_15_04_2019))
@@ -75,7 +73,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void isAPeakAndPlateTime() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateTime(_07_00))
                 .isTrue();
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateTime(_08_00))
@@ -94,7 +92,7 @@ class PeakAndPlateRuleUIOTest {
 
     @Test
     void equals() {
-        licensePlateNumberUIOUnderTest = NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
+        licensePlateNumberUIOUnderTest = CAN_NOT_ON_THE_ROAD_ON_MONDAYS;
         assertThat(licensePlateNumberUIOUnderTest.equals(licensePlateNumberUIOUnderTest))
                 .isTrue();
         assertThat(licensePlateNumberUIOUnderTest.equals(this))
