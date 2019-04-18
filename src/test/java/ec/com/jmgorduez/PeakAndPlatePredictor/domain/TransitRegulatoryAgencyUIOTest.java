@@ -20,32 +20,6 @@ class TransitRegulatoryAgencyUIOTest {
     }
 
     @Test
-    void isAPeakAndPlateDate() {
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateDate(_20_04_2019))
-                .isFalse();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateDate(_15_04_2019))
-                .isTrue();
-    }
-
-    @Test
-    void isAPeakAndPlateTime() {
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_07_00))
-                .isTrue();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_08_00))
-                .isTrue();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_09_30))
-                .isTrue();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_09_31))
-                .isFalse();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_16_00))
-                .isTrue();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_19_30))
-                .isTrue();
-        assertThat(transitRegulatoryAgencyUIOUnderTest.isAPeakAndPlateTime(_19_31))
-                .isFalse();
-    }
-
-    @Test
     void instanceLicensePlateNumber() {
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8580))
                 .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_MONDAYS);
@@ -56,4 +30,5 @@ class TransitRegulatoryAgencyUIOTest {
         assertThat(transitRegulatoryAgencyUIOUnderTest.instanceLicensePlateNumber(PCI_8585))
                 .isEqualTo(NUMBER_UIO_CAN_NOT_ON_THE_ROAD_ON_WEDNESDAYS);
     }
+
 }

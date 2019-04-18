@@ -1,6 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ILicensePlateNumber;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.ITransitRegulatoryAgency;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
@@ -27,27 +27,22 @@ public class PeakAndPlateChecker implements IPeakAndPlateChecker {
         String line = readLine.get();
         if (isNotEmptyLine(line)) {
             Queue<String> parameters = getParameters(line);
-            ILicensePlateNumber licensePlateNumber
+            IPeakAndPlateRule licensePlateNumber
                     = takeLicensePlateNumber(transitRegulatoryAgency.get()::instanceLicensePlateNumber,
                     parameters);
             LocalDate date = takeDate(instanceDate, parameters);
             LocalTime time = takeTime(instanceTime, parameters);
-            writeOutput(writeOutputConsumer, line, licensePlateNumber, date, time,
-                    transitRegulatoryAgency.get()::isAPeakAndPlateDate,
-                    transitRegulatoryAgency.get()::isAPeakAndPlateTime);
+            writeOutput(writeOutputConsumer, line, licensePlateNumber, date, time);
             checkPeakAndPlate(readLine, transitRegulatoryAgency, instanceDate, instanceTime, writeOutputConsumer);
         }
     }
 
     private void writeOutput(BiConsumer<String, PeakAndPlateStatus> writeOutputConsumer,
                              String line,
-                             ILicensePlateNumber licensePlateNumber,
+                             IPeakAndPlateRule licensePlateNumber,
                              LocalDate date,
-                             LocalTime time,
-                             Function<LocalDate, Boolean> isAPeakAndPlateDate,
-                             Function<LocalTime, Boolean> isAPeakAndPlateTime) {
-        writeOutputConsumer.accept(line, getPeakAndPlateStatus(licensePlateNumber, date, time,
-                isAPeakAndPlateDate, isAPeakAndPlateTime));
+                             LocalTime time) {
+        writeOutputConsumer.accept(line, getPeakAndPlateStatus(licensePlateNumber, date, time));
     }
 
     private LocalTime takeTime(Function<String, LocalTime> instanceTime, Queue<String> parameters) {
@@ -62,18 +57,14 @@ public class PeakAndPlateChecker implements IPeakAndPlateChecker {
         return line != null;
     }
 
-    private PeakAndPlateStatus getPeakAndPlateStatus(ILicensePlateNumber licensePlateNumber,
+    private PeakAndPlateStatus getPeakAndPlateStatus(IPeakAndPlateRule licensePlateNumber,
                                                      LocalDate date,
-                                                     LocalTime time,
-                                                     Function<LocalDate, Boolean> isAPeakAndPlateDate,
-                                                     Function<LocalTime, Boolean> isAPeakAndPlateTime) {
-        return licensePlateNumber.peakAndPlateStatusAt(date, time,
-                isAPeakAndPlateDate,
-                isAPeakAndPlateTime);
+                                                     LocalTime time) {
+        return licensePlateNumber.peakAndPlateStatusAt(date, time);
     }
 
-    private ILicensePlateNumber takeLicensePlateNumber(Function<String, ILicensePlateNumber> instanceLicensePlateNumber,
-                                                       Queue<String> parameters) {
+    private IPeakAndPlateRule takeLicensePlateNumber(Function<String, IPeakAndPlateRule> instanceLicensePlateNumber,
+                                                     Queue<String> parameters) {
         return instanceLicensePlateNumber.apply(parameters.poll());
     }
 
