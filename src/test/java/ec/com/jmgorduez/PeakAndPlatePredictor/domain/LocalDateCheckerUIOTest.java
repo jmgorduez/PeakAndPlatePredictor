@@ -31,7 +31,7 @@ class LocalDateCheckerUIOTest {
                 .isTrue();
         assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_24_05_2019))
                 .isFalse();
-        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_01_01_2019))
+        assertThat(localDateCheckerUIOUnderTest.isNotAHoliday(_01_05_2019))
                 .isTrue();
     }
 

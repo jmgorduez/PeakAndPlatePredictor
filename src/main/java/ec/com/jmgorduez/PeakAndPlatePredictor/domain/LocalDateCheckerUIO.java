@@ -16,7 +16,7 @@ import static java.time.DayOfWeek.FRIDAY;
 public class LocalDateCheckerUIO implements ILocalDateChecker {
     @Override
     public Boolean isNotAHoliday(LocalDate date) {
-        return null;
+        return !holidays(Year.from(date)).contains(date);
     }
 
     @Override
