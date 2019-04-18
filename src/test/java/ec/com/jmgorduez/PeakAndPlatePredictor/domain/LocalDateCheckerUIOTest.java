@@ -24,10 +24,10 @@ class LocalDateCheckerUIOTest {
     @Test
     void isNotAWeekendDay() {
         assertThat(localDateCheckerUIOUnderTest.isNotAWeekendDay(_15_04_2019))
-                .isFalse();
+                .isTrue();
         assertThat(localDateCheckerUIOUnderTest.isNotAWeekendDay(_20_04_2019))
-                .isTrue();
+                .isFalse();
         assertThat(localDateCheckerUIOUnderTest.isNotAWeekendDay(_21_04_2019))
-                .isTrue();
+                .isFalse();
     }
 }
