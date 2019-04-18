@@ -25,16 +25,14 @@ class PeakAndPlateCheckerTest {
 
     private PeakAndPlateChecker peakAndPlateCheckerUnderTest;
     private IPeakAndPlateRuleFactory peakAndPlateRuleFactoryUIO;
-    private IPeakAndPlateLineSplitter peakAndPlateLineSplitter;
     private Queue<String> inputs;
     private List<String> outputs;
 
     @BeforeEach
     void setUp() {
         peakAndPlateRuleFactoryUIO = new PeakAndPlateRuleFactoryUIO();
-        peakAndPlateLineSplitter = new PeakAndPlateLineSplitter(null, LocalDate::parse, LocalTime::parse);
         peakAndPlateCheckerUnderTest
-                = new PeakAndPlateChecker(null, peakAndPlateRuleFactoryUIO::instanceRule);
+                = new PeakAndPlateChecker(this::peakAndPlateLineSplitter, peakAndPlateRuleFactoryUIO::instanceRule);
         inputs = new ArrayDeque<>(Stream
                 .of(PCI_8580_2019_04_15_07_00, PCI_8580_2019_04_15_10_00, PCI_8581_2019_04_16_07_00)
                 .collect(Collectors.toList()));
@@ -69,5 +67,9 @@ class PeakAndPlateCheckerTest {
 
     void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatusOutput) {
         outputs.add(input.concat(BLANK_SPACE_STRING).concat(peakAndPlateStatusOutput.name()));
+    }
+
+    IPeakAndPlateLineSplitter peakAndPlateLineSplitter(String line) {
+        return new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse);
     }
 }
