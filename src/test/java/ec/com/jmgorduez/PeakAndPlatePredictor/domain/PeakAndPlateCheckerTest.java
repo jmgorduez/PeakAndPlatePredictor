@@ -1,5 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,13 +24,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PeakAndPlateCheckerTest {
 
     private PeakAndPlateChecker peakAndPlateCheckerUnderTest;
-    private PeakAndPlateRuleFactoryUIO peakAndPlateRuleFactoryUIO;
+    private IPeakAndPlateRuleFactory peakAndPlateRuleFactoryUIO;
+    private IPeakAndPlateLineSplitter peakAndPlateLineSplitter;
     private Queue<String> inputs;
     private List<String> outputs;
 
     @BeforeEach
     void setUp() {
         peakAndPlateRuleFactoryUIO = new PeakAndPlateRuleFactoryUIO();
+        peakAndPlateLineSplitter = new PeakAndPlateLineSplitter(null, LocalDate::parse, LocalTime::parse);
         peakAndPlateCheckerUnderTest
                 = new PeakAndPlateChecker(null, peakAndPlateRuleFactoryUIO::instanceRule);
         inputs = new ArrayDeque<>(Stream
