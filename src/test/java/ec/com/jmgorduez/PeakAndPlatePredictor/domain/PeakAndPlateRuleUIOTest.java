@@ -67,7 +67,7 @@ class PeakAndPlateRuleUIOTest {
                 .isFalse();
         assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_15_04_2019))
                 .isTrue();
-        assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_24_05_2019))
+        assertThat(licensePlateNumberUIOUnderTest.isAPeakAndPlateDate(_01_01_2019))
                 .isFalse();
     }
 

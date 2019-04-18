@@ -21,6 +21,7 @@ public class TestDataGenerator {
     public static final String PCI_8584 = "PCI8584";
     public static final String PCI_8585 = "PCI8585";
 
+    public static final LocalDate _01_01_2019 = LocalDate.parse("2019-01-01");
     public static final LocalDate _15_04_2019 = LocalDate.parse("2019-04-15");
     public static final LocalDate _16_04_2019 = LocalDate.parse("2019-04-16");
     public static final LocalDate _19_04_2019 = LocalDate.parse("2019-04-19");
