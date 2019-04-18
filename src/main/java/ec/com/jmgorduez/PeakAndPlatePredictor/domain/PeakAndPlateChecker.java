@@ -36,13 +36,13 @@ public class PeakAndPlateChecker implements IPeakAndPlateChecker {
                 .ifPresent(inputLine -> {
                     IPeakAndPlateLineSplitter lineSplitter = lineSplitter(inputLine);
                     IPeakAndPlateRule peakAndPlateRule = instancePeakAndPlateRule(lineSplitter::licensePlateNumber);
-                    writeOutputLine.accept(inputLine, peakAndPlateStatus(lineSplitter, peakAndPlateRule));
+                    writeOutputLine.accept(inputLine, peakAndPlateStatus(peakAndPlateRule, lineSplitter::date, lineSplitter::time));
                     checkPeakAndPlate(readInputLine, writeOutputLine);
                 });
     }
 
-    private PeakAndPlateStatus peakAndPlateStatus(IPeakAndPlateLineSplitter lineSplitter, IPeakAndPlateRule peakAndPlateRule) {
-        return peakAndPlateRule.peakAndPlateStatusAt(lineSplitter.date(), lineSplitter.time());
+    private PeakAndPlateStatus peakAndPlateStatus(IPeakAndPlateRule peakAndPlateRule, Supplier<LocalDate> date, Supplier<LocalTime> time) {
+        return peakAndPlateRule.peakAndPlateStatusAt(date.get(), time.get());
     }
 
     private IPeakAndPlateLineSplitter lineSplitter(String inputLine) {
