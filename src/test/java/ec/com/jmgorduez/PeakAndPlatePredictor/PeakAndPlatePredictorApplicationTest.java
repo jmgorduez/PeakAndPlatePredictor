@@ -63,7 +63,8 @@ class PeakAndPlatePredictorApplicationTest {
         simulateUserInput(BLANK_SPACE_STRING);
         PeakAndPlatePredictorApplication.main(new String[]{});
         assertThat(outContent.toString())
-                .isEqualTo(INPUT_FORMAT_MESSAGE);
+                .isEqualTo(ENTER_INFORMATION_MESSAGE.concat(END_OF_LINE)
+                        .concat(INPUT_FORMAT_MESSAGE).concat(END_OF_LINE));
         assertThat(errContent.toString())
                 .isEqualTo(EMPTY_STRING);
     }

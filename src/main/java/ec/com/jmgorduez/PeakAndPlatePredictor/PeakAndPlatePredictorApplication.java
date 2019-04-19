@@ -21,15 +21,33 @@ public class PeakAndPlatePredictorApplication {
 
     public static void main(String[] args) {
         try {
-            IPeakAndPlateChecker peakAndPlateChecker = new PeakAndPlateChecker(
-                    PeakAndPlatePredictorApplication::getPeakAndPlateLineSplitter,
-                    peakAndPlateRuleFactory::instanceRule);
-            peakAndPlateChecker.checkPeakAndPlate(unchecked(getBufferedReader(args)::readLine),
-                    PeakAndPlatePredictorApplication::writeOutput);
+            if(doesNotHaveArguments(args)){
+                System.out.println(ENTER_INFORMATION_MESSAGE);
+            }
+            checkPeakAndPlate(getBufferedReader(args));
+        } catch (NullPointerException e) {
+            System.out.println(INPUT_FORMAT_MESSAGE);
+
         } catch (IOException | RuntimeException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private static PeakAndPlateChecker getPeakAndPlateChecker() {
+        return new PeakAndPlateChecker(
+                PeakAndPlatePredictorApplication::getPeakAndPlateLineSplitter,
+                peakAndPlateRuleFactory::instanceRule);
+    }
+
+    private static void checkPeakAndPlate(BufferedReader bufferedReader) throws FileNotFoundException {
+        IPeakAndPlateChecker peakAndPlateChecker = getPeakAndPlateChecker();
+        peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
+                PeakAndPlatePredictorApplication::writeOutput);
+    }
+
+    private static boolean doesNotHaveArguments(String[] args) {
+        return !hasArguments(args);
     }
 
     private static PeakAndPlateLineSplitter getPeakAndPlateLineSplitter(String line) {
@@ -39,10 +57,9 @@ public class PeakAndPlatePredictorApplication {
     static BufferedReader getBufferedReader(String[] args) throws FileNotFoundException {
         BufferedReader bufferedReader;
         if (hasArguments(args)) {
-            bufferedReader = new BufferedReader(new FileReader(args[0]));
+            bufferedReader = new BufferedReader(new FileReader(args[ZERO]));
         } else {
             bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println(ENTER_INFORMATION_MESSAGE);
         }
         return bufferedReader;
     }
