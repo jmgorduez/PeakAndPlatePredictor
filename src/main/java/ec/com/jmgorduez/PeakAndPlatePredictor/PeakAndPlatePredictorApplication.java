@@ -20,25 +20,37 @@ public class PeakAndPlatePredictorApplication {
     private final static String INFORMATION_MESSAGE
             = "Please, enter Lisence plate number date and time following this format XXX0000 YYYY-MM-DD HH:MM or ENTER to exit.";
     private static IPeakAndPlateRuleFactory peakAndPlateRuleFactory = new PeakAndPlateRuleFactoryUIO();
-    private static IPeakAndPlateChecker peakAndPlateChecker
-            = new PeakAndPlateChecker(line -> new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse),
-            peakAndPlateRuleFactory::instanceRule);
 
     public static void main(String[] args) {
         try {
-            BufferedReader bufferedReader;
-            if (args.length != 0) {
-                bufferedReader = new BufferedReader(new FileReader(args[0]));
-            }else {
-                bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-                System.out.println(INFORMATION_MESSAGE);
-            }
-            peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
+            IPeakAndPlateChecker peakAndPlateChecker = new PeakAndPlateChecker(
+                    PeakAndPlatePredictorApplication::getPeakAndPlateLineSplitter,
+                    peakAndPlateRuleFactory::instanceRule);
+            peakAndPlateChecker.checkPeakAndPlate(unchecked(getBufferedReader(args)::readLine),
                     PeakAndPlatePredictorApplication::writeOutput);
         } catch (IOException | RuntimeException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private static PeakAndPlateLineSplitter getPeakAndPlateLineSplitter(String line) {
+        return new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse);
+    }
+
+    static BufferedReader getBufferedReader(String[] args) throws FileNotFoundException {
+        BufferedReader bufferedReader;
+        if (hasArguments(args)) {
+            bufferedReader = new BufferedReader(new FileReader(args[0]));
+        } else {
+            bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println(INFORMATION_MESSAGE);
+        }
+        return bufferedReader;
+    }
+
+    private static boolean hasArguments(String[] args) {
+        return args.length != 0;
     }
 
     static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {
