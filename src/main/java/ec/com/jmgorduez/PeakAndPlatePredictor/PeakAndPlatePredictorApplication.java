@@ -18,40 +18,40 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.ThrowingSupplier.unch
 public class PeakAndPlatePredictorApplication {
 
     private static IPeakAndPlateRuleFactory peakAndPlateRuleFactory = new PeakAndPlateRuleFactoryUIO();
+    private static IPeakAndPlateChecker peakAndPlateChecker = getPeakAndPlateChecker();
 
     public static void main(String[] args) {
         try {
-            if(doesNotHaveArguments(args)){
+            if (doesNotHaveArguments(args)) {
                 System.out.println(ENTER_INFORMATION_MESSAGE);
             }
             checkPeakAndPlate(getBufferedReader(args));
-        } catch (NullPointerException e) {
-            System.out.println(INPUT_FORMAT_MESSAGE);
-
         } catch (IOException | RuntimeException e) {
             e.printStackTrace();
         }
-
     }
 
-    private static PeakAndPlateChecker getPeakAndPlateChecker() {
-        return new PeakAndPlateChecker(
-                PeakAndPlatePredictorApplication::getPeakAndPlateLineSplitter,
-                peakAndPlateRuleFactory::instanceRule);
+    private static void checkPeakAndPlate(BufferedReader bufferedReader) throws IOException {
+        while (bufferedReader.ready()) {
+            try {
+                peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
+                        PeakAndPlatePredictorApplication::writeOutput);
+            } catch (NullPointerException e) {
+                System.out.println(INPUT_FORMAT_MESSAGE);
+            }
+        }
     }
 
-    private static void checkPeakAndPlate(BufferedReader bufferedReader) throws FileNotFoundException {
-        IPeakAndPlateChecker peakAndPlateChecker = getPeakAndPlateChecker();
-        peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
-                PeakAndPlatePredictorApplication::writeOutput);
+    static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {
+        System.out.println(input.concat(BLANK_SPACE_STRING).concat(peakAndPlateStatus.name()));
     }
 
     private static boolean doesNotHaveArguments(String[] args) {
         return !hasArguments(args);
     }
 
-    private static PeakAndPlateLineSplitter getPeakAndPlateLineSplitter(String line) {
-        return new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse);
+    private static boolean hasArguments(String[] args) {
+        return args.length != 0;
     }
 
     static BufferedReader getBufferedReader(String[] args) throws FileNotFoundException {
@@ -64,11 +64,10 @@ public class PeakAndPlatePredictorApplication {
         return bufferedReader;
     }
 
-    private static boolean hasArguments(String[] args) {
-        return args.length != 0;
-    }
 
-    static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {
-        System.out.println(input.concat(BLANK_SPACE_STRING).concat(peakAndPlateStatus.name()));
+    private static PeakAndPlateChecker getPeakAndPlateChecker() {
+        return new PeakAndPlateChecker(
+                line -> new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse),
+                peakAndPlateRuleFactory::instanceRule);
     }
 }
