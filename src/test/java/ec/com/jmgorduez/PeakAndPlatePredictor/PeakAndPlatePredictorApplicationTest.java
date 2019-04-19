@@ -71,6 +71,19 @@ class PeakAndPlatePredictorApplicationTest {
                 .isEqualTo(EMPTY_STRING);
     }
 
+    @Test
+    void mainUserEntersAnUnsupportedTimeFormatFollowedByRightInput() {
+        simulateUserInput(PCI_8581_2019_04_16_7_00.concat(END_OF_LINE)
+                .concat(PCI_8580_2019_04_15_10_00).concat(END_OF_LINE));
+        PeakAndPlatePredictorApplication.main(new String[]{});
+        assertThat(outContent.toString())
+                .isEqualTo(initialMessage().concat(
+                        inputFormatErrorMessage()).concat(
+                        outputMessageForRightInput(PCI_8580_2019_04_15_10_00, ON_THE_ROAD)));
+        assertThat(errContent.toString())
+                .isEqualTo(EMPTY_STRING);
+    }
+
     private String outputMessageForRightInput(String input, PeakAndPlateStatus output) {
         return input.concat(BLANK_SPACE_STRING).concat(output.name()).concat(END_OF_LINE);
     }

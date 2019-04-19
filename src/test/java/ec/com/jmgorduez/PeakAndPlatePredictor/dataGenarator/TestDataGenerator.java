@@ -50,5 +50,7 @@ public class TestDataGenerator {
     public static final String PCI_8580_2019_04_15_10_00 = "PCI8580 2019-04-15 10:00";
     public static final String PCI_8581_2019_04_16_07_00 = "PCI8581 2019-04-16 07:00";
 
+    public static final String PCI_8581_2019_04_16_7_00 = "PCI8581 2019-04-16 7:00";
+
     public static final String END_OF_LINE = "\n";
 }
