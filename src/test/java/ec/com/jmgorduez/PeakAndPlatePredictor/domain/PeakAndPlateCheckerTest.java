@@ -76,6 +76,6 @@ class PeakAndPlateCheckerTest {
     }
 
     IPeakAndPlateLineSplitter peakAndPlateLineSplitter(String line) {
-        return new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse);
+        return new PeakAndPlateLineSplitter(line, BLANK_SPACE_CHAR, LocalDate::parse, LocalTime::parse);
     }
 }

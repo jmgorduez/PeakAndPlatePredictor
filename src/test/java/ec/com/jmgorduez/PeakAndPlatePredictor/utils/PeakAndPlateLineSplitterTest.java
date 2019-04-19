@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_CHAR;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PeakAndPlateLineSplitterTest {
@@ -16,7 +17,7 @@ class PeakAndPlateLineSplitterTest {
     @BeforeEach
     void setUp() {
         peakAndPlateLineSplitterUnderTest = new PeakAndPlateLineSplitter(PCI_8580_2019_04_15_07_00,
-                LocalDate::parse, LocalTime::parse);
+                BLANK_SPACE_CHAR, LocalDate::parse, LocalTime::parse);
     }
 
     @Test

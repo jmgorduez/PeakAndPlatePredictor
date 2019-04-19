@@ -39,6 +39,7 @@ public class Constants {
             MAY_01, MAY_24, AUGUST_10, OCTOBER_09, NOVEMBER_02, NOVEMBER_03, DECEMBER_06, DECEMBER_25);
 
     public static final String BLANK_SPACE_STRING = " ";
+    public static final Character BLANK_SPACE_CHAR = ' ';
     public final static String ENTER_INFORMATION_MESSAGE
             = "Please, enter License plate number Date and Time following this format XXX0000 YYYY-MM-DD HH:MM or ENTER to exit.";
     public final static String INPUT_FORMAT_MESSAGE
