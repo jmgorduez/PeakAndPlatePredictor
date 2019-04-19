@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.refEq;
 
 class PeakAndPlateRuleFactoryUIOTest {
 
+    private static final String typePeakAndPlateRuleUIO = "typePeakAndPlateRuleUIO";
     private PeakAndPlateRuleFactoryUIO peakAndPlateRuleFactoryUIO;
 
     @BeforeEach
@@ -20,14 +20,14 @@ class PeakAndPlateRuleFactoryUIOTest {
     @Test
     void instanceRule() {
 
-        assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8580)))
-                .isEqualTo(refEq(MONDAYS_NOT_ON_THE_ROAD));
-        assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8581)))
-                .isEqualTo(refEq(MONDAYS_NOT_ON_THE_ROAD));
-        assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8584)))
-                .isEqualTo(refEq(WEDNESDAYS_NOT_ON_THE_ROAD));
-        assertThat(refEq(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8585)))
-                .isEqualTo(refEq(WEDNESDAYS_NOT_ON_THE_ROAD));
+        assertThat(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8580))
+                .isEqualToComparingOnlyGivenFields(MONDAYS_NOT_ON_THE_ROAD, typePeakAndPlateRuleUIO);
+        assertThat(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8581))
+                .isEqualToComparingOnlyGivenFields(MONDAYS_NOT_ON_THE_ROAD, typePeakAndPlateRuleUIO);
+        assertThat(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8584))
+                .isEqualToComparingOnlyGivenFields(WEDNESDAYS_NOT_ON_THE_ROAD, typePeakAndPlateRuleUIO);
+        assertThat(peakAndPlateRuleFactoryUIO.instanceRule(PCI_8585))
+                .isEqualToComparingOnlyGivenFields(WEDNESDAYS_NOT_ON_THE_ROAD, typePeakAndPlateRuleUIO);
     }
 
 }
