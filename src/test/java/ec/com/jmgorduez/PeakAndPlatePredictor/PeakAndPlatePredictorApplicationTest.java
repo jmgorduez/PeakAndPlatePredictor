@@ -10,6 +10,7 @@ import java.io.*;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_STRING;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.INFORMATION_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PeakAndPlatePredictorApplicationTest {
@@ -30,11 +31,21 @@ class PeakAndPlatePredictorApplicationTest {
     }
 
     @Test
-    void main() {
+    void mainWithArguments() {
         PeakAndPlatePredictorApplication.main(new String[]{FILE_PATH});
         assertThat(outContent.toString())
                 .isEqualTo(PCI_8580_2019_04_15_07_00.concat(BLANK_SPACE_STRING)
                         .concat(PeakAndPlateStatus.NOT_ON_THE_ROAD.name()).concat(END_OF_LINE));
+    }
+
+    @Test
+    void mainWithoutArguments() {
+        simulateUserInput(PCI_8580_2019_04_15_10_00);
+        PeakAndPlatePredictorApplication.main(new String[]{});
+        assertThat(outContent.toString())
+                .isEqualTo(INFORMATION_MESSAGE.concat(END_OF_LINE)
+                        .concat(PCI_8580_2019_04_15_10_00).concat(BLANK_SPACE_STRING)
+                        .concat(PeakAndPlateStatus.ON_THE_ROAD.name()).concat(END_OF_LINE));
     }
 
     @Test
