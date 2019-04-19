@@ -41,4 +41,6 @@ public class Constants {
     public static final String BLANK_SPACE_STRING = " ";
     public final static String ENTER_INFORMATION_MESSAGE
             = "Please, enter Lisence plate number date and time following this format XXX0000 YYYY-MM-DD HH:MM or ENTER to exit.";
+    public final static String INPUT_FORMAT_MESSAGE
+            = "The input should have the following format XXX0000 YYYY-MM-DD HH:MM. Please check it.";
 }

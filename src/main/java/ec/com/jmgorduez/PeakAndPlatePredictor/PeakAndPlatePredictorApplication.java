@@ -12,8 +12,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_STRING;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.ENTER_INFORMATION_MESSAGE;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.ThrowingSupplier.unchecked;
 
 public class PeakAndPlatePredictorApplication {

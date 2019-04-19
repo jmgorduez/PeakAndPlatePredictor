@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_STRING;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.ENTER_INFORMATION_MESSAGE;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PeakAndPlatePredictorApplicationTest {
@@ -64,7 +63,7 @@ class PeakAndPlatePredictorApplicationTest {
         simulateUserInput(BLANK_SPACE_STRING);
         PeakAndPlatePredictorApplication.main(new String[]{});
         assertThat(errContent.toString())
-                .isEqualTo(ENTER_INFORMATION_MESSAGE);
+                .isEqualTo(INPUT_FORMAT_MESSAGE);
     }
 
     @Test
