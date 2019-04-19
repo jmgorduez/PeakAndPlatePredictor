@@ -2,12 +2,12 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.INonWorkingDateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 
 import java.time.*;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.NOT_ON_THE_ROAD;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus.ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants._19_31;
 

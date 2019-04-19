@@ -5,6 +5,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateR
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateSplitterFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

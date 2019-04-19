@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.utils;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.exceptions;
 
 import java.util.function.Supplier;
 

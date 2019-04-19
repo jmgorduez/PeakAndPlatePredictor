@@ -3,7 +3,7 @@ package ec.com.jmgorduez.PeakAndPlatePredictor;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateLineSplitter;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.ThrowingSupplier.unchecked;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.exceptions.ThrowingSupplier.unchecked;
 
 public class PeakAndPlatePredictorApplication {
 
@@ -32,14 +32,14 @@ public class PeakAndPlatePredictorApplication {
     }
 
     private static void checkPeakAndPlate(BufferedReader bufferedReader) throws IOException {
-        while (bufferedReader.ready()) {
+        do {
             try {
                 peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
                         PeakAndPlatePredictorApplication::writeOutput);
             } catch (NullPointerException e) {
                 System.out.println(INPUT_FORMAT_MESSAGE);
             }
-        }
+        } while (bufferedReader.ready());
     }
 
     static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {
