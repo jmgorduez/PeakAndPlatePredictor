@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.BLANK_SPACE_STRING;
-import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.INFORMATION_MESSAGE;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.ENTER_INFORMATION_MESSAGE;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.ThrowingSupplier.unchecked;
 
 public class PeakAndPlatePredictorApplication {
@@ -43,7 +43,7 @@ public class PeakAndPlatePredictorApplication {
             bufferedReader = new BufferedReader(new FileReader(args[0]));
         } else {
             bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println(INFORMATION_MESSAGE);
+            System.out.println(ENTER_INFORMATION_MESSAGE);
         }
         return bufferedReader;
     }
