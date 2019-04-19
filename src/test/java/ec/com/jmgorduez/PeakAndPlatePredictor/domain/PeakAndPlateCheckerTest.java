@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,7 +30,7 @@ class PeakAndPlateCheckerTest {
         peakAndPlateRuleFactoryUIO = new PeakAndPlateRuleFactoryUIO();
         peakAndPlateCheckerUnderTest
                 = new PeakAndPlateChecker(this::peakAndPlateLineSplitter, peakAndPlateRuleFactoryUIO::instanceRule);
-        inputs = new ArrayDeque<>(Stream
+        inputs = new ArrayDeque<String>(Stream
                 .of(PCI_8580_2019_04_15_07_00, PCI_8580_2019_04_15_10_00, PCI_8581_2019_04_16_07_00)
                 .collect(Collectors.toList()));
         outputs = new ArrayList<>();
