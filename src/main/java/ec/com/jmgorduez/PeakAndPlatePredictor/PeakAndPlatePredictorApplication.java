@@ -2,15 +2,14 @@ package ec.com.jmgorduez.PeakAndPlatePredictor;
 
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateChecker;
-import ec.com.jmgorduez.PeakAndPlatePredictor.utils.PeakAndPlateLineSplitter;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateLineSplitterFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.factories.PeakAndPlateLineLineSplitterFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories.PeakAndPlateRuleFactoryUIO;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
@@ -18,11 +17,10 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.excepti
 
 public class PeakAndPlatePredictorApplication {
 
-    private static IPeakAndPlateRuleFactory peakAndPlateRuleFactory = new PeakAndPlateRuleFactoryUIO();
-    private static IPeakAndPlateChecker peakAndPlateChecker
-            = new PeakAndPlateChecker(
-            line -> new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse),
-            peakAndPlateRuleFactory::instanceRule);
+    private static IPeakAndPlateRuleFactory ruleFactory = new PeakAndPlateRuleFactoryUIO();
+    private static IPeakAndPlateLineSplitterFactory splitterFactory = new PeakAndPlateLineLineSplitterFactory();
+    private static IPeakAndPlateChecker peakAndPlateChecker = new PeakAndPlateChecker(
+            splitterFactory::instanceSplitter, ruleFactory::instanceRule);
 
     public static void main(String[] args) {
         try {

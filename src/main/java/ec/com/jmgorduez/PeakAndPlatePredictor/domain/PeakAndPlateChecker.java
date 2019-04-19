@@ -4,7 +4,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils.IPeakAnd
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateSplitterFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateLineSplitterFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 
 import java.time.LocalDate;
@@ -18,9 +18,9 @@ import static java.util.Optional.ofNullable;
 public class PeakAndPlateChecker implements IPeakAndPlateChecker {
 
     private IPeakAndPlateRuleFactory peakAndPlateRuleFactory;
-    private IPeakAndPlateSplitterFactory peakAndPlateSplitterFactory;
+    private IPeakAndPlateLineSplitterFactory peakAndPlateSplitterFactory;
 
-    public PeakAndPlateChecker(IPeakAndPlateSplitterFactory splitterFactory,
+    public PeakAndPlateChecker(IPeakAndPlateLineSplitterFactory splitterFactory,
                                IPeakAndPlateRuleFactory ruleFactory) {
         this.peakAndPlateRuleFactory = ruleFactory;
         this.peakAndPlateSplitterFactory = splitterFactory;
