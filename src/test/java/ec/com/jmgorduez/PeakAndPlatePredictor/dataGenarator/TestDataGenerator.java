@@ -11,6 +11,9 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlate
 
 public class TestDataGenerator {
 
+    public static final String EMPTY_STRING = "";
+    public static final String NULL_STRING = null;
+
     public static final PeakAndPlateRuleUIO MONDAYS_NOT_ON_THE_ROAD
             = new PeakAndPlateRuleUIO(MONDAYS_NOT_ON_ROAD, new NonWorkingDateCheckerUIO());
     public static final PeakAndPlateRuleUIO WEDNESDAYS_NOT_ON_THE_ROAD

@@ -37,10 +37,17 @@ class PeakAndPlateCheckerTest {
     }
 
     @Test
-    void checkPeakAndPlateEmptyInput() {
-        inputs.clear();
+    void checkPeakAndPlateNullInput() {
         peakAndPlateCheckerUnderTest
-                .checkPeakAndPlate(inputs::poll, this::writeOutput);
+                .checkPeakAndPlate(() -> NULL_STRING, this::writeOutput);
+        assertThat(outputs.isEmpty())
+                .isTrue();
+    }
+
+    @Test
+    void checkPeakAndPlateEmptyInput() {
+        peakAndPlateCheckerUnderTest
+                .checkPeakAndPlate(() -> EMPTY_STRING, this::writeOutput);
         assertThat(outputs.isEmpty())
                 .isTrue();
     }
