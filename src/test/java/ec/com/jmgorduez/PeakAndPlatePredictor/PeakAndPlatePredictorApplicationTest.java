@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator.TestDataGenerator.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.NOT_ON_THE_ROAD;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus.ON_THE_ROAD;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,8 +39,7 @@ class PeakAndPlatePredictorApplicationTest {
     void mainWithArguments() {
         PeakAndPlatePredictorApplication.main(new String[]{INPUT_FILE_PATH});
         assertThat(outContent.toString())
-                .isEqualTo(PCI_8580_2019_04_15_07_00.concat(BLANK_SPACE_STRING)
-                        .concat(PeakAndPlateStatus.NOT_ON_THE_ROAD.name()).concat(END_OF_LINE));
+                .isEqualTo(outputMessageForRightInput(PCI_8580_2019_04_15_07_00, NOT_ON_THE_ROAD));
     }
 
     @Test
@@ -53,20 +54,33 @@ class PeakAndPlatePredictorApplicationTest {
         simulateUserInput(PCI_8580_2019_04_15_10_00);
         PeakAndPlatePredictorApplication.main(new String[]{});
         assertThat(outContent.toString())
-                .isEqualTo(ENTER_INFORMATION_MESSAGE.concat(END_OF_LINE)
-                        .concat(PCI_8580_2019_04_15_10_00).concat(BLANK_SPACE_STRING)
-                        .concat(PeakAndPlateStatus.ON_THE_ROAD.name()).concat(END_OF_LINE));
+                .isEqualTo(initialMessage().concat(
+                        outputMessageForRightInput(PCI_8580_2019_04_15_10_00, ON_THE_ROAD)));
     }
 
     @Test
-    void mainUserEntersBlankSpaceString() {
-        simulateUserInput(BLANK_SPACE_STRING);
+    void mainUserEntersBlankSpaceStringFollowedByRightInput() {
+        simulateUserInput(BLANK_SPACE_STRING.concat(END_OF_LINE)
+                .concat(PCI_8580_2019_04_15_10_00).concat(END_OF_LINE));
         PeakAndPlatePredictorApplication.main(new String[]{});
         assertThat(outContent.toString())
-                .isEqualTo(ENTER_INFORMATION_MESSAGE.concat(END_OF_LINE)
-                        .concat(INPUT_FORMAT_MESSAGE).concat(END_OF_LINE));
+                .isEqualTo(initialMessage().concat(
+                        inputFormatErrorMessage()).concat(
+                        outputMessageForRightInput(PCI_8580_2019_04_15_10_00, ON_THE_ROAD)));
         assertThat(errContent.toString())
                 .isEqualTo(EMPTY_STRING);
+    }
+
+    private String outputMessageForRightInput(String input, PeakAndPlateStatus output) {
+        return input.concat(BLANK_SPACE_STRING).concat(output.name()).concat(END_OF_LINE);
+    }
+
+    private String inputFormatErrorMessage() {
+        return (INPUT_FORMAT_MESSAGE).concat(END_OF_LINE);
+    }
+
+    private String initialMessage() {
+        return ENTER_INFORMATION_MESSAGE.concat(END_OF_LINE);
     }
 
     @Test
