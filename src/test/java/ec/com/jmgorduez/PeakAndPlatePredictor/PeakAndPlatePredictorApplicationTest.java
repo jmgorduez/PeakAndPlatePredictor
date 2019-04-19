@@ -1,7 +1,6 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus;
-import ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,27 +14,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class PeakAndPlatePredictorApplicationTest {
 
-    private static final String FILE_PATH = "/home/jm/projects/java/PeakAndPlatePredictor/inputFile/input.txt";
+    private static final String INPUT_FILE_PATH = "/home/jm/projects/java/PeakAndPlatePredictor/inputFile/input.txt";
+    private static final String NON_EXISTING_INPUT_FILE_PATH = "/home/jm/projects/java/PeakAndPlatePredictor/inputFile/?????.txt";
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalErr = System.err;
 
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
     }
 
     @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 
     @Test
     void mainWithArguments() {
-        PeakAndPlatePredictorApplication.main(new String[]{FILE_PATH});
+        PeakAndPlatePredictorApplication.main(new String[]{INPUT_FILE_PATH});
         assertThat(outContent.toString())
                 .isEqualTo(PCI_8580_2019_04_15_07_00.concat(BLANK_SPACE_STRING)
                         .concat(PeakAndPlateStatus.NOT_ON_THE_ROAD.name()).concat(END_OF_LINE));
+    }
+
+    @Test
+    void mainWithArgumentsNonExistingFile() {
+        PeakAndPlatePredictorApplication.main(new String[]{NON_EXISTING_INPUT_FILE_PATH});
+        assertThat(errContent.toString())
+                .contains(new FileNotFoundException().getClass().getCanonicalName());
     }
 
     @Test
@@ -51,7 +62,7 @@ class PeakAndPlatePredictorApplicationTest {
     @Test
     void getBufferedReaderWithArguments() {
         try {
-            String line = PeakAndPlatePredictorApplication.getBufferedReader(new String[]{FILE_PATH}).readLine();
+            String line = PeakAndPlatePredictorApplication.getBufferedReader(new String[]{INPUT_FILE_PATH}).readLine();
             assertThat(line)
                     .isEqualTo(PCI_8580_2019_04_15_07_00);
             simulateUserInput(PCI_8580_2019_04_15_10_00);
