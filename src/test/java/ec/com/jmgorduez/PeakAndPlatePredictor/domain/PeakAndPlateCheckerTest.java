@@ -1,7 +1,7 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRuleFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

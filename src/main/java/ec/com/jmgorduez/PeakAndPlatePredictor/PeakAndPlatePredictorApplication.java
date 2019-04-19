@@ -5,7 +5,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateStatus;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRuleFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
 
 import java.io.*;

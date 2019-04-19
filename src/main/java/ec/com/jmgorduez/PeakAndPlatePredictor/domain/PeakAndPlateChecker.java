@@ -3,13 +3,12 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
-import ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateSplitterFactory;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Optional;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.NULL_STRING;
@@ -17,13 +16,13 @@ import static java.util.Optional.ofNullable;
 
 public class PeakAndPlateChecker implements IPeakAndPlateChecker {
 
-    private Function<String, IPeakAndPlateRule> instancePeakAndPlateRule;
-    private Function<String, IPeakAndPlateLineSplitter> instanPeakAndPlateLineSplitter;
+    private IPeakAndPlateRuleFactory peakAndPlateRuleFactory;
+    private IPeakAndPlateSplitterFactory peakAndPlateSplitterFactory;
 
-    public PeakAndPlateChecker(Function<String, IPeakAndPlateLineSplitter> instanPeakAndPlateLineSplitter,
-                               Function<String, IPeakAndPlateRule> instancePeakAndPlateRule) {
-        this.instancePeakAndPlateRule = instancePeakAndPlateRule;
-        this.instanPeakAndPlateLineSplitter = instanPeakAndPlateLineSplitter;
+    public PeakAndPlateChecker(IPeakAndPlateSplitterFactory splitterFactory,
+                               IPeakAndPlateRuleFactory ruleFactory) {
+        this.peakAndPlateRuleFactory = ruleFactory;
+        this.peakAndPlateSplitterFactory = splitterFactory;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class PeakAndPlateChecker implements IPeakAndPlateChecker {
                 .map(this::mapEmptyStringToNull)
                 .ifPresent(inputLine -> {
                     IPeakAndPlateLineSplitter lineSplitter = lineSplitter(inputLine);
-                    IPeakAndPlateRule peakAndPlateRule = instancePeakAndPlateRule(lineSplitter::licensePlateNumber);
+                    IPeakAndPlateRule peakAndPlateRule = peakAndPlateRule(lineSplitter::licensePlateNumber);
                     writeOutputLine.accept(inputLine, peakAndPlateStatus(peakAndPlateRule, lineSplitter::date, lineSplitter::time));
                     checkPeakAndPlate(readInputLine, writeOutputLine);
                 });
@@ -48,10 +47,10 @@ public class PeakAndPlateChecker implements IPeakAndPlateChecker {
     }
 
     private IPeakAndPlateLineSplitter lineSplitter(String inputLine) {
-        return instanPeakAndPlateLineSplitter.apply(inputLine);
+        return peakAndPlateSplitterFactory.instanceSplitter(inputLine);
     }
 
-    private IPeakAndPlateRule instancePeakAndPlateRule(Supplier<String> licensePlateNumberString) {
-        return instancePeakAndPlateRule.apply(licensePlateNumberString.get());
+    private IPeakAndPlateRule peakAndPlateRule(Supplier<String> licensePlateNumberString) {
+        return peakAndPlateRuleFactory.instanceRule(licensePlateNumberString.get());
     }
 }

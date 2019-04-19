@@ -1,7 +1,7 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRuleFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 
