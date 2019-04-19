@@ -1,5 +1,6 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories.PeakAndPlateRuleFactoryUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

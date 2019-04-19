@@ -1,7 +1,10 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories;
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils.NonWorkingDateCheckerUIO;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 

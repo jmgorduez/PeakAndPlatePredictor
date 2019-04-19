@@ -2,11 +2,11 @@ package ec.com.jmgorduez.PeakAndPlatePredictor;
 
 
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateChecker;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.PeakAndPlateLineSplitter;
+import ec.com.jmgorduez.PeakAndPlatePredictor.utils.PeakAndPlateLineSplitter;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.factories.IPeakAndPlateRuleFactory;
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleFactoryUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories.PeakAndPlateRuleFactoryUIO;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -36,10 +36,12 @@ public class PeakAndPlatePredictorApplication {
             try {
                 peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
                         PeakAndPlatePredictorApplication::writeOutput);
+                break;
             } catch (NullPointerException e) {
                 System.out.println(INPUT_FORMAT_MESSAGE);
+                continue;
             }
-        } while (bufferedReader.ready());
+        } while (true);
     }
 
     static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {

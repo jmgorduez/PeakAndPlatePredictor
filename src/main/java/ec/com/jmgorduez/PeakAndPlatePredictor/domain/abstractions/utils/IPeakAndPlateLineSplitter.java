@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

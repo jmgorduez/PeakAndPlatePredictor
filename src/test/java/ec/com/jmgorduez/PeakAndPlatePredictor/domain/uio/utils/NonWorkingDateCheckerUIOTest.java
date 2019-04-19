@@ -1,5 +1,6 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils.NonWorkingDateCheckerUIO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

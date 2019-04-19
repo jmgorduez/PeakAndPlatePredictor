@@ -1,13 +1,13 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.NonWorkingDateCheckerUIO;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils.NonWorkingDateCheckerUIO;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleUIO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Year;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlateRuleUIO.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO.*;
 
 public class TestDataGenerator {
 

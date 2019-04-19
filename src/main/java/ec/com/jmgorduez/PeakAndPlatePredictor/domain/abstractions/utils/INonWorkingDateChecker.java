@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 

@@ -1,8 +1,9 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums;
 
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO;
 import org.junit.jupiter.api.Test;
 
-import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.TypePeakAndPlateRuleUIO.*;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.NINE;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.ZERO;
 import static java.time.DayOfWeek.FRIDAY;

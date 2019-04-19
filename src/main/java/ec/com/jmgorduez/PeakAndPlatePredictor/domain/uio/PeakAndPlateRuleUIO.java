@@ -1,8 +1,9 @@
 package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.INonWorkingDateChecker;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils.INonWorkingDateChecker;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateRule;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.enums.PeakAndPlateStatus;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO;
 
 import java.time.*;
 

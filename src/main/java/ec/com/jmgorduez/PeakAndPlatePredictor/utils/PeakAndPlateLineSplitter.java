@@ -1,7 +1,6 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain;
+package ec.com.jmgorduez.PeakAndPlatePredictor.utils;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.IPeakAndPlateLineSplitter;
-import ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils.IPeakAndPlateLineSplitter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,6 +1,6 @@
-package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio;
+package ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils;
 
-import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.INonWorkingDateChecker;
+import ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.utils.INonWorkingDateChecker;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
