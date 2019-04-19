@@ -12,6 +12,8 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories.PeakAndPlateR
 import java.io.*;
 import java.time.format.DateTimeParseException;
 
+import static ec.com.jmgorduez.PeakAndPlatePredictor.infrastructure.BufferedReaderSupplier.doesNotHaveArguments;
+import static ec.com.jmgorduez.PeakAndPlatePredictor.infrastructure.BufferedReaderSupplier.getBufferedReader;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.exceptions.ThrowingSupplier.unchecked;
 
@@ -48,23 +50,5 @@ public class PeakAndPlatePredictorApplication {
 
     static void writeOutput(String input, PeakAndPlateStatus peakAndPlateStatus) {
         System.out.println(input.concat(BLANK_SPACE_STRING).concat(peakAndPlateStatus.name()));
-    }
-
-    private static boolean doesNotHaveArguments(String[] args) {
-        return !hasArguments(args);
-    }
-
-    private static boolean hasArguments(String[] args) {
-        return args.length != ZERO;
-    }
-
-    static BufferedReader getBufferedReader(String[] args) throws FileNotFoundException {
-        BufferedReader bufferedReader;
-        if (hasArguments(args)) {
-            bufferedReader = new BufferedReader(new FileReader(args[ZERO]));
-        } else {
-            bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        }
-        return bufferedReader;
     }
 }

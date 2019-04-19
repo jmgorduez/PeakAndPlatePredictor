@@ -3,6 +3,7 @@ package ec.com.jmgorduez.PeakAndPlatePredictor.dataGenarator;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.utils.NonWorkingDateCheckerUIO;
 import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.PeakAndPlateRuleUIO;
 
+import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Year;
@@ -10,6 +11,9 @@ import java.time.Year;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.enums.TypePeakAndPlateRuleUIO.*;
 
 public class TestDataGenerator {
+
+    public static final String INPUT_FILE_PATH = "/home/jm/projects/java/PeakAndPlatePredictor/inputFile/input.txt";
+    public static final String NON_EXISTING_INPUT_FILE_PATH = "/home/jm/projects/java/PeakAndPlatePredictor/inputFile/?????.txt";
 
     public static final String EMPTY_STRING = "";
 
@@ -53,4 +57,9 @@ public class TestDataGenerator {
     public static final String PCI_8581_2019_04_16_7_00 = "PCI8581 2019-04-16 7:00";
 
     public static final String END_OF_LINE = "\n";
+
+    public static final void simulateUserInput(String inputString) {
+        ByteArrayInputStream input = new ByteArrayInputStream(inputString.getBytes());
+        System.setIn(input);
+    }
 }
