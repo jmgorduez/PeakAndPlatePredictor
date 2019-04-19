@@ -11,6 +11,7 @@ import ec.com.jmgorduez.PeakAndPlatePredictor.domain.uio.factories.PeakAndPlateR
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 
 import static ec.com.jmgorduez.PeakAndPlatePredictor.utils.Constants.*;
 import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.exceptions.ThrowingSupplier.unchecked;
@@ -37,7 +38,7 @@ public class PeakAndPlatePredictorApplication {
                 peakAndPlateChecker.checkPeakAndPlate(unchecked(bufferedReader::readLine),
                         PeakAndPlatePredictorApplication::writeOutput);
                 break;
-            } catch (NullPointerException e) {
+            } catch (NullPointerException | DateTimeParseException e) {
                 System.out.println(INPUT_FORMAT_MESSAGE);
                 continue;
             }
