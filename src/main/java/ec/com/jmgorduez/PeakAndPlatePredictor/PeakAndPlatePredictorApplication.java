@@ -19,7 +19,10 @@ import static ec.com.jmgorduez.PeakAndPlatePredictor.domain.abstractions.excepti
 public class PeakAndPlatePredictorApplication {
 
     private static IPeakAndPlateRuleFactory peakAndPlateRuleFactory = new PeakAndPlateRuleFactoryUIO();
-    private static IPeakAndPlateChecker peakAndPlateChecker = getPeakAndPlateChecker();
+    private static IPeakAndPlateChecker peakAndPlateChecker
+            = new PeakAndPlateChecker(
+            line -> new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse),
+            peakAndPlateRuleFactory::instanceRule);
 
     public static void main(String[] args) {
         try {
@@ -65,12 +68,5 @@ public class PeakAndPlatePredictorApplication {
             bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         }
         return bufferedReader;
-    }
-
-
-    private static PeakAndPlateChecker getPeakAndPlateChecker() {
-        return new PeakAndPlateChecker(
-                line -> new PeakAndPlateLineSplitter(line, LocalDate::parse, LocalTime::parse),
-                peakAndPlateRuleFactory::instanceRule);
     }
 }
