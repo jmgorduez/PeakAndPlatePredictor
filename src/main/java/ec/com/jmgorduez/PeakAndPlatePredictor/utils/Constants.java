@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
+
+    public static final String NULL_STRING = null;
+
     public static final Integer ONE = 1;
     public static final Integer TWO = 2;
     public static final Integer THREE = 3;
