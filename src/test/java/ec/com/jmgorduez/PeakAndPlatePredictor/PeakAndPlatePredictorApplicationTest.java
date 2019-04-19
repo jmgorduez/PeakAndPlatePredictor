@@ -49,13 +49,22 @@ class PeakAndPlatePredictorApplicationTest {
     }
 
     @Test
-    void getBufferedReader() {
+    void getBufferedReaderWithArguments() {
         try {
             String line = PeakAndPlatePredictorApplication.getBufferedReader(new String[]{FILE_PATH}).readLine();
             assertThat(line)
                     .isEqualTo(PCI_8580_2019_04_15_07_00);
             simulateUserInput(PCI_8580_2019_04_15_10_00);
-            line = PeakAndPlatePredictorApplication.getBufferedReader(new String[]{}).readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void getBufferedReaderWithoutArguments() {
+        try {
+            simulateUserInput(PCI_8580_2019_04_15_10_00);
+            String line = PeakAndPlatePredictorApplication.getBufferedReader(new String[]{}).readLine();
             assertThat(line)
                     .isEqualTo(PCI_8580_2019_04_15_10_00);
             simulateUserInput(PCI_8581_2019_04_16_07_00);
