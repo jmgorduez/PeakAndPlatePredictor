@@ -55,7 +55,7 @@ public class PeakAndPlatePredictorApplication {
     }
 
     private static boolean hasArguments(String[] args) {
-        return args.length != 0;
+        return args.length != ZERO;
     }
 
     static BufferedReader getBufferedReader(String[] args) throws FileNotFoundException {
