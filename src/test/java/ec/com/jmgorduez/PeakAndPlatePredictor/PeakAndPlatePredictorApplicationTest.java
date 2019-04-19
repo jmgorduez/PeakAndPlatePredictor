@@ -62,7 +62,7 @@ class PeakAndPlatePredictorApplicationTest {
     void mainUserEntersBlankSpaceString() {
         simulateUserInput(BLANK_SPACE_STRING);
         PeakAndPlatePredictorApplication.main(new String[]{});
-        assertThat(errContent.toString())
+        assertThat(outContent.toString())
                 .isEqualTo(INPUT_FORMAT_MESSAGE);
     }
 
